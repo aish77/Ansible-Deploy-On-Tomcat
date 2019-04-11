@@ -1,0 +1,40 @@
+2019-04-11 19:57:06,240 p=26564 u=osgdev |  localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 19:57:08,691 p=26564 u=osgdev |  TG-Devops-OS067.wipro.com | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 19:57:08,758 p=26564 u=osgdev |  TG-Devops-OS067 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 19:58:39,308 p=29118 u=osgdev |    hosts (3):
+2019-04-11 19:58:39,308 p=29118 u=osgdev |      localhost
+2019-04-11 19:58:39,309 p=29118 u=osgdev |      TG-Devops-OS067
+2019-04-11 19:58:39,309 p=29118 u=osgdev |      TG-Devops-OS067.wipro.com
+2019-04-11 20:05:35,307 p=6017 u=osgdev |  localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 20:05:36,666 p=6017 u=osgdev |  TG-Devops-OS067 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 20:05:36,694 p=6017 u=osgdev |  TG-Devops-OS067.wipro.com | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 20:05:51,880 p=6512 u=osgdev |  localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 20:05:51,964 p=6512 u=osgdev |  TG-Devops-OS067 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 20:05:52,010 p=6512 u=osgdev |  TG-Devops-OS067.wipro.com | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
