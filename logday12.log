@@ -1,0 +1,309 @@
+2019-04-11 21:23:25,079 p=11905 u=osgdev |  localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 21:23:26,363 p=11905 u=osgdev |  TG-Devops-OS067 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 21:23:26,520 p=11905 u=osgdev |  TG-Devops-OS067.wipro.com | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-11 21:23:57,796 p=12757 u=osgdev |  localhost | SUCCESS | rc=0 >>
+Hello World
+
+2019-04-11 21:24:34,035 p=13559 u=osgdev |  localhost | SUCCESS | rc=0 >>
+Hello World
+
+2019-04-11 21:25:29,650 p=14764 u=osgdev |  localhost | FAILED | rc=1 >>
+cat: /etc/resov.conf: No such file or directorynon-zero return code
+
+2019-04-11 21:27:39,840 p=17628 u=osgdev |   [WARNING]: Consider using file module with state=touch rather than running touch
+
+2019-04-11 21:27:39,841 p=17628 u=osgdev |  localhost | SUCCESS | rc=0 >>
+
+
+2019-04-11 21:29:51,380 p=20488 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "dest": "/home/osgdev/ansiblehands/newfile2", 
+    "gid": 999, 
+    "group": "docker", 
+    "mode": "0644", 
+    "owner": "osgdev", 
+    "size": 0, 
+    "state": "file", 
+    "uid": 1000
+}
+2019-04-11 21:30:41,589 p=21611 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "path": "/home/osgdev/ansiblehands/newfile2", 
+    "state": "absent"
+}
+2019-04-11 21:35:12,887 p=27770 u=osgdev |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: AnsibleFileNotFound: Could not find or access '/home/osgdev/ansiblehands/newfile2'
+2019-04-11 21:35:12,887 p=27770 u=osgdev |  localhost | FAILED! => {
+    "changed": false, 
+    "msg": "Could not find or access '/home/osgdev/ansiblehands/newfile2'"
+}
+2019-04-11 21:35:32,070 p=28206 u=osgdev |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: AnsibleFileNotFound: Could not find or access '/home/osgdev/ansiblehands/newfile2'
+2019-04-11 21:35:32,071 p=28206 u=osgdev |  localhost | FAILED! => {
+    "changed": false, 
+    "msg": "Could not find or access '/home/osgdev/ansiblehands/newfile2'"
+}
+2019-04-11 21:36:12,533 p=29078 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709", 
+    "dest": "/home/osgdev/ansiblehands/newfile2", 
+    "gid": 999, 
+    "group": "docker", 
+    "md5sum": "d41d8cd98f00b204e9800998ecf8427e", 
+    "mode": "0644", 
+    "owner": "osgdev", 
+    "size": 0, 
+    "src": "/home/osgdev/.ansible/tmp/ansible-tmp-1554998771.65-163222367469129/source", 
+    "state": "file", 
+    "uid": 1000
+}
+2019-04-11 21:42:35,270 p=5196 u=osgdev |  localhost | FAILED! => {
+    "msg": "The module unarchieve was not found in configured module paths. Additionally, core modules are missing. If this is a checkout, run 'git pull --rebase' to correct this problem."
+}
+2019-04-11 21:43:07,829 p=5895 u=osgdev |  localhost | FAILED! => {
+    "changed": false, 
+    "msg": "Could not find or access '/home/osgdev/myDownloads/apache-tomcat-8.5.27.tar.gz'"
+}
+2019-04-11 21:43:49,107 p=6764 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "dest": "/home/osgdev/resource", 
+    "extract_results": {
+        "cmd": [
+            "/bin/tar", 
+            "--extract", 
+            "-C", 
+            "/home/osgdev/resource", 
+            "-z", 
+            "-f", 
+            "/home/osgdev/.ansible/tmp/ansible-tmp-1554999227.64-64934326764844/source"
+        ], 
+        "err": "", 
+        "out": "", 
+        "rc": 0
+    }, 
+    "gid": 999, 
+    "group": "docker", 
+    "handler": "TgzArchive", 
+    "mode": "0755", 
+    "owner": "osgdev", 
+    "size": 4096, 
+    "src": "/home/osgdev/.ansible/tmp/ansible-tmp-1554999227.64-64934326764844/source", 
+    "state": "directory", 
+    "uid": 1000
+}
+2019-04-16 00:28:23,259 p=17974 u=osgdev |   [WARNING]: Could not match supplied host pattern, ignoring: locahost
+
+2019-04-16 00:28:23,281 p=17974 u=osgdev |   [WARNING]: No hosts matched, nothing to do
+
+2019-04-16 00:28:48,753 p=18717 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "checksum": "c46bef72fe29a59d93244b889f130e28ee575df5", 
+    "dest": "/home/osgdev/resource/server.xml.j2", 
+    "gid": 999, 
+    "group": "docker", 
+    "md5sum": "1a1db053f27ddddebd261c4b1d8c534c", 
+    "mode": "0644", 
+    "owner": "osgdev", 
+    "size": 7511, 
+    "src": "/home/osgdev/.ansible/tmp/ansible-tmp-1555354727.44-11229811490005/source", 
+    "state": "file", 
+    "uid": 1000
+}
+2019-04-16 00:32:03,256 p=22978 u=osgdev |  localhost | FAILED! => {
+    "changed": false, 
+    "msg": "dest is required"
+}
+2019-04-16 00:33:01,037 p=24230 u=osgdev |  ERROR! Extraneous options or arguments
+2019-04-16 00:34:05,674 p=25570 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "checksum": "ca5761ea0ff20e47df81a758de86bb189a41c046", 
+    "dest": "/home/osgdev/resource/apache-tomcat-8.5.27/conf/server.xml", 
+    "gid": 999, 
+    "group": "docker", 
+    "md5sum": "af0c9bb3b165cb3f5a0aa07943502c2a", 
+    "mode": "0600", 
+    "owner": "osgdev", 
+    "size": 7511, 
+    "src": "/home/osgdev/.ansible/tmp/ansible-tmp-1555355044.76-278071130484606/source", 
+    "state": "file", 
+    "uid": 1000
+}
+2019-04-17 12:52:30,283 p=25538 u=osgdev |  localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-17 12:52:32,601 p=25538 u=osgdev |  TG-Devops-OS067.wipro.com | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-17 12:52:32,614 p=25538 u=osgdev |  TG-Devops-OS067 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2019-04-17 13:01:14,031 p=4955 u=osgdev |  localhost | SUCCESS => {
+    "changed": true, 
+    "checksum": "ca5761ea0ff20e47df81a758de86bb189a41c046", 
+    "dest": "/home/osgdev/resource/apache-tomcat-8.5.27/server.xml", 
+    "gid": 999, 
+    "group": "docker", 
+    "md5sum": "af0c9bb3b165cb3f5a0aa07943502c2a", 
+    "mode": "0644", 
+    "owner": "osgdev", 
+    "size": 7511, 
+    "src": "/home/osgdev/.ansible/tmp/ansible-tmp-1555486273.25-159538757994243/source", 
+    "state": "file", 
+    "uid": 1000
+}
+2019-04-17 13:04:57,192 p=9681 u=osgdev |  localhost | SUCCESS | rc=0 >>
+Tomcat started.
+
+2019-04-17 13:09:27,831 p=15809 u=osgdev |  localhost | FAILED | rc=127 >>
+/bin/sh: 1: /home/osgdev/resource/apache-tomcat-8.5.27/bin/stopp.sh: not foundnon-zero return code
+
+2019-04-17 13:10:50,509 p=17636 u=osgdev |  localhost | FAILED | rc=127 >>
+/bin/sh: 1: /home/osgdev/resource/apache-tomcat-8.5.27/bin/stop.sh: not foundnon-zero return code
+
+2019-04-17 13:11:39,527 p=18702 u=osgdev |  localhost | SUCCESS | rc=0 >>
+
+
+2019-04-17 13:17:31,407 p=26232 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yaml': line 2, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts : localhost
+ tasks :
+       ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 8
+2019-04-17 13:20:50,862 p=30264 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yaml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:23:13,381 p=935 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yaml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:32:28,677 p=13054 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yaml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:34:15,436 p=15657 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:36:57,593 p=19204 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:39:20,535 p=22274 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:44:08,815 p=28434 u=osgdev |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/echo.yml': line 2, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+-hosts: localhost
+ tasks:
+      ^ here
+
+exception type: <class 'yaml.scanner.ScannerError'>
+exception: mapping values are not allowed in this context
+  in "<unicode string>", line 2, column 7
+2019-04-17 13:48:10,655 p=1353 u=osgdev |  PLAY [localhost] ********************************************************************************************************************
+2019-04-17 13:48:10,703 p=1353 u=osgdev |  TASK [Gathering Facts] **************************************************************************************************************
+2019-04-17 13:48:12,942 p=1353 u=osgdev |  ok: [localhost]
+2019-04-17 13:48:12,951 p=1353 u=osgdev |  TASK [echo Hello World] *************************************************************************************************************
+2019-04-17 13:48:13,393 p=1353 u=osgdev |  changed: [localhost]
+2019-04-17 13:48:13,396 p=1353 u=osgdev |  PLAY RECAP **************************************************************************************************************************
+2019-04-17 13:48:13,396 p=1353 u=osgdev |  localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+2019-04-17 13:48:54,459 p=2461 u=osgdev |  PLAY [localhost] ********************************************************************************************************************
+2019-04-17 13:48:54,479 p=2461 u=osgdev |  TASK [Gathering Facts] **************************************************************************************************************
+2019-04-17 13:48:55,571 p=2461 u=osgdev |  ok: [localhost]
+2019-04-17 13:48:55,579 p=2461 u=osgdev |  TASK [echo Hello World] *************************************************************************************************************
+2019-04-17 13:48:55,961 p=2461 u=osgdev |  changed: [localhost]
+2019-04-17 13:48:55,964 p=2461 u=osgdev |  PLAY RECAP **************************************************************************************************************************
+2019-04-17 13:48:55,964 p=2461 u=osgdev |  localhost                  : ok=2    changed=1    unreachable=0    failed=0   
