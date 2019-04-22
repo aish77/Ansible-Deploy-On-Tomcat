@@ -1,0 +1,12 @@
+---
+# tasks file for roles/tomcat
+- name: Create the target folder
+  file:
+   path: /home/osgdev/ansiblehands/tomcat
+   state: directory
+
+- name: Install Tomcat
+  unarchive:
+   src: apache-tomcat-8.5.27.tar.gz
+   dest: /home/osgdev/ansiblehands/tomcat 
+  

@@ -1,0 +1,14 @@
+---
+# tasks file for roles/node.js
+- name: Create a target folder for nodejs installation
+  file:
+   path: /home/osgdev/ansiblehands/nodejs
+   state: directory
+- name: copy tar file to the target folder
+  copy: 
+   src: /home/osgdev/Downloads/node-v10.15.3-linux-x64.tar.xz
+   dest: /home/osgdev/ansiblehands/nodejs
+- name: Unarchive the tar file for the nodejs installation
+  unarchive:
+   src: /home/osgdev/ansiblehands/nodejs/node-v10.15.3-linux-x64.tar.xz
+   dest: /home/osgdev/ansiblehands/nodejs

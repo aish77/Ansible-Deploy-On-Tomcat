@@ -307,3 +307,104 @@ exception: mapping values are not allowed in this context
 2019-04-17 13:48:55,961 p=2461 u=osgdev |  changed: [localhost]
 2019-04-17 13:48:55,964 p=2461 u=osgdev |  PLAY RECAP **************************************************************************************************************************
 2019-04-17 13:48:55,964 p=2461 u=osgdev |  localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+2019-04-22 15:45:57,549 p=6447 u=osgdev |  PLAY [localhost] *****************************************************************************************************************************
+2019-04-22 15:45:57,695 p=6447 u=osgdev |  TASK [Gathering Facts] ***********************************************************************************************************************
+2019-04-22 15:45:59,268 p=6447 u=osgdev |  ok: [localhost]
+2019-04-22 15:45:59,278 p=6447 u=osgdev |  TASK [echo Hello World] **********************************************************************************************************************
+2019-04-22 15:45:59,651 p=6447 u=osgdev |  changed: [localhost]
+2019-04-22 15:45:59,657 p=6447 u=osgdev |  PLAY RECAP ***********************************************************************************************************************************
+2019-04-22 15:45:59,657 p=6447 u=osgdev |  localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+2019-04-22 16:53:54,604 p=31780 u=osgdev |  - roles/node.js was created successfully
+2019-04-22 17:26:19,662 p=10630 u=osgdev |  PLAY [localhost] *****************************************************************************************************************************
+2019-04-22 17:26:19,831 p=10630 u=osgdev |  TASK [Gathering Facts] ***********************************************************************************************************************
+2019-04-22 17:26:21,885 p=10630 u=osgdev |  ok: [localhost]
+2019-04-22 17:26:21,892 p=10630 u=osgdev |  TASK [nodejs : Create a target folder for nodejs installation] *******************************************************************************
+2019-04-22 17:26:22,373 p=10630 u=osgdev |  changed: [localhost]
+2019-04-22 17:26:22,375 p=10630 u=osgdev |  PLAY RECAP ***********************************************************************************************************************************
+2019-04-22 17:26:22,375 p=10630 u=osgdev |  localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+2019-04-22 17:44:31,687 p=2232 u=osgdev |  PLAY [localhost] *****************************************************************************************************************************
+2019-04-22 17:44:31,744 p=2232 u=osgdev |  TASK [Gathering Facts] ***********************************************************************************************************************
+2019-04-22 17:44:33,575 p=2232 u=osgdev |  ok: [localhost]
+2019-04-22 17:44:33,585 p=2232 u=osgdev |  TASK [nodejs : Create a target folder for nodejs installation] *******************************************************************************
+2019-04-22 17:44:33,991 p=2232 u=osgdev |  ok: [localhost]
+2019-04-22 17:44:34,052 p=2232 u=osgdev |  TASK [nodejs : copy tar file to the target folder] *******************************************************************************************
+2019-04-22 17:44:34,339 p=2232 u=osgdev |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: AnsibleFileNotFound: Could not find or access '/home/osgdev/Download/node-v10.15.3-linux-x64.tar.xz'
+2019-04-22 17:44:34,340 p=2232 u=osgdev |  fatal: [localhost]: FAILED! => {"changed": false, "msg": "Could not find or access '/home/osgdev/Download/node-v10.15.3-linux-x64.tar.xz'"}
+2019-04-22 17:44:34,343 p=2232 u=osgdev |  	to retry, use: --limit @/home/osgdev/ansiblehands/roles/nodejs/node.retry
+
+2019-04-22 17:44:34,344 p=2232 u=osgdev |  PLAY RECAP ***********************************************************************************************************************************
+2019-04-22 17:44:34,344 p=2232 u=osgdev |  localhost                  : ok=2    changed=0    unreachable=0    failed=1   
+2019-04-22 17:45:51,869 p=4108 u=osgdev |  PLAY [localhost] *****************************************************************************************************************************
+2019-04-22 17:45:51,883 p=4108 u=osgdev |  TASK [Gathering Facts] ***********************************************************************************************************************
+2019-04-22 17:45:52,826 p=4108 u=osgdev |  ok: [localhost]
+2019-04-22 17:45:52,834 p=4108 u=osgdev |  TASK [nodejs : Create a target folder for nodejs installation] *******************************************************************************
+2019-04-22 17:45:53,152 p=4108 u=osgdev |  ok: [localhost]
+2019-04-22 17:45:53,160 p=4108 u=osgdev |  TASK [nodejs : copy tar file to the target folder] *******************************************************************************************
+2019-04-22 17:45:56,807 p=4108 u=osgdev |  changed: [localhost]
+2019-04-22 17:45:56,812 p=4108 u=osgdev |  PLAY RECAP ***********************************************************************************************************************************
+2019-04-22 17:45:56,812 p=4108 u=osgdev |  localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+2019-04-22 17:58:52,056 p=21460 u=osgdev |  ERROR! no action detected in task. This often indicates a misspelled module name, or incorrect module path.
+
+The error appears to have been in '/home/osgdev/ansiblehands/roles/nodejs/tasks/main.yml': line 11, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   dest: /home/osgdev/ansiblehands/nodejs
+- name: Unarchive the tar file for the nodejs installation
+  ^ here
+
+
+The error appears to have been in '/home/osgdev/ansiblehands/roles/nodejs/tasks/main.yml': line 11, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   dest: /home/osgdev/ansiblehands/nodejs
+- name: Unarchive the tar file for the nodejs installation
+  ^ here
+
+exception type: <class 'ansible.errors.AnsibleParserError'>
+exception: no action detected in task. This often indicates a misspelled module name, or incorrect module path.
+
+The error appears to have been in '/home/osgdev/ansiblehands/roles/nodejs/tasks/main.yml': line 11, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   dest: /home/osgdev/ansiblehands/nodejs
+- name: Unarchive the tar file for the nodejs installation
+  ^ here
+
+2019-04-22 17:59:44,097 p=22634 u=osgdev |  PLAY [localhost] *****************************************************************************************************************************
+2019-04-22 17:59:44,126 p=22634 u=osgdev |  TASK [Gathering Facts] ***********************************************************************************************************************
+2019-04-22 17:59:45,019 p=22634 u=osgdev |  ok: [localhost]
+2019-04-22 17:59:45,027 p=22634 u=osgdev |  TASK [nodejs : Create a target folder for nodejs installation] *******************************************************************************
+2019-04-22 17:59:45,396 p=22634 u=osgdev |  ok: [localhost]
+2019-04-22 17:59:45,408 p=22634 u=osgdev |  TASK [nodejs : copy tar file to the target folder] *******************************************************************************************
+2019-04-22 17:59:46,082 p=22634 u=osgdev |  ok: [localhost]
+2019-04-22 17:59:46,099 p=22634 u=osgdev |  TASK [nodejs : Unarchive the tar file for the nodejs installation] ***************************************************************************
+2019-04-22 17:59:52,818 p=22634 u=osgdev |  changed: [localhost]
+2019-04-22 17:59:52,838 p=22634 u=osgdev |  PLAY RECAP ***********************************************************************************************************************************
+2019-04-22 17:59:52,839 p=22634 u=osgdev |  localhost                  : ok=4    changed=1    unreachable=0    failed=0   
+2019-04-22 21:16:58,512 p=14213 u=osgdev |  - roles/tomcat was created successfully
+2019-04-22 21:28:21,920 p=30643 u=osgdev |  ERROR! 'role' is not a valid attribute for a Play
+
+The error appears to have been in '/home/osgdev/ansiblehands/roles/tomcat/tomcat.yml': line 1, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- hosts: localhost
+  ^ here
+
+2019-04-22 21:30:24,099 p=1290 u=osgdev |  PLAY [localhost] *********************************************************************************************************************
+2019-04-22 21:30:24,279 p=1290 u=osgdev |  TASK [Gathering Facts] ***************************************************************************************************************
+2019-04-22 21:30:26,730 p=1290 u=osgdev |  ok: [localhost]
+2019-04-22 21:30:26,747 p=1290 u=osgdev |  TASK [tomcat : Create the target folder] *********************************************************************************************
+2019-04-22 21:30:27,282 p=1290 u=osgdev |  changed: [localhost]
+2019-04-22 21:30:27,302 p=1290 u=osgdev |  TASK [tomcat : Install Tomcat] *******************************************************************************************************
+2019-04-22 21:30:29,185 p=1290 u=osgdev |  changed: [localhost]
+2019-04-22 21:30:29,188 p=1290 u=osgdev |  PLAY RECAP ***************************************************************************************************************************
+2019-04-22 21:30:29,190 p=1290 u=osgdev |  localhost                  : ok=3    changed=2    unreachable=0    failed=0   
