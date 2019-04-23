@@ -518,3 +518,4 @@ Caused by: java.net.BindException: Address already in use
 23-Apr-2019 21:38:06.070 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8000"]
 23-Apr-2019 21:38:06.070 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
 23-Apr-2019 21:38:06.070 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+Number of records available: 4
