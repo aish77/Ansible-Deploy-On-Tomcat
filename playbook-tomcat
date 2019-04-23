@@ -1,0 +1,604 @@
+Script started on Tuesday 23 April 2019 07:14:08 PM IST
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cd tomcat/apache-tomcat-8.5.27/conf/ser[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kser[K[K[K[K[K[K[K[K[K[K[K[K[Kvi[K[Kmv server.xml server.xml.j2
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ls
+1            ansibleserver  day12hands2   day13handsOn  logday12.log  newfile2  playbook-tomcat  server.xml.j2
+ansible.cfg  day12hands     day12number3  echo.yml      newfile       [0m[01;34mnodejs[0m    [01;34mroles[0m            [01;34mtomcat[0m
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi server.xml.j2 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"server.xml.j2" 167L, 7511C[>c[27m[23m[m[H[2J[1;1H[34m<?[m[32mxml version[m=[31m"1.0"[m[32m encoding[m=[31m"UTF-8"[m[34m?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->[m
+[36m<Server [m[32mport[m=[31m"8005"[m[36m [m[32mshutdown[m=[31m"SHUTDOWN"[m[36m>
+[m  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.startup.VersionLoggerListener"[m[36m />[m
+  [34m<!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+[m  [34m<!--APR library loader. Documentation at /docs/apr.html -->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.AprLifecycleListener"[m[36m [m[32mSSLEngine[m=[31m"on"[m[36m />[m
+  [34m<!-- Prevent memory leaks due to use of particular java/javax APIs-->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.JreMemoryLeakPreventionListener"[m[36m />[m[31;125H1,1[11CTop"server.xml.j2" 167L, 7511C[97C   [11C   [1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;125H2,1[11CTop[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9,0-1[9;1H[?12l[?25h[?25l[31;125H10,1 [10;1H[?12l[?25h[?25l[31;126H1,0-1[11;1H[?12l[?25h[?25l[31;126H2,1  [12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7[17;1H[?12l[?25h[?25l[31;126H8[18;1H[?12l[?25h[?25l[31;126H9[19;1H[?12l[?25h[?25l[31;125H20[20;1H[?12l[?25h[?25l[31;126H1[21;1H[?12l[?25h[?25l[31;126H2[22;1H[?12l[?25h[?25l[31;126H3[23;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;126H5[25;1H[?12l[?25h[?25l[31;126H6[26;1H[?12l[?25h[?25l[31;126H7[27;1H[?12l[?25h[?25l[31;126H8[28;1H[?12l[?25h[?25l[31;126H9[29;1H[?12l[?25h[?25l[31;125H30[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"[m[36m />[m[31;1H[K[31;125H31,1[11C0%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.ThreadLocalLeakPreventionListener"[m[36m />[m[31;125H[K[31;125H32,1[11C1%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H33,0-1[9C2%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[34m<!-- Global JNDI resources[m[31;125H[K[31;125H34,1[11C2%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m       Documentation at /docs/jndi-resources-howto.html[m[31;125H[K[31;125H35,1[11C3%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  -->[m[31;125H[K[31;125H36,1[11C4%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<GlobalNamingResources>[m[31;125H[K[31;125H37,1[11C5%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[34m<!-- Editable user database that can also be used by[m[31;125H[K[31;125H38,1[11C5%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         UserDatabaseRealm to authenticate users[m[31;125H[K[31;125H39,1[11C6%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m    -->[m[31;125H[K[31;125H40,1[11C7%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[36m<Resource [m[32mname[m=[31m"UserDatabase"[m[36m [m[32mauth[m=[31m"Container"[m[31;125H[K[31;125H41,1[11C8%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[36m              [m[32mtype[m=[31m"org.apache.catalina.UserDatabase"[m[31;125H[K[31;125H42,1[11C8%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[36m              [m[32mdescription[m=[31m"User database that can be updated and saved"[m[31;125H[K[31;125H43,1[11C9%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[36m              [m[32mfactory[m=[31m"org.apache.catalina.users.MemoryUserDatabaseFactory"[m[31;125H[K[31;125H44,1[10C10%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[36m              [m[32mpathname[m=[31m"conf/tomcat-users.xml"[m[36m />[m[31;125H[K[31;125H45,1[10C10%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m</GlobalNamingResources>[m[31;125H[K[31;125H46,1[10C11%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H47,0-1[8C12%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[34m<!-- A "Service" is a collection of one or more "Connectors" that share[m[31;125H[K[31;125H48,1[10C13%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m       a single "Container" Note:  A "Service" is not itself a "Container",[m[31;125H[K[31;125H49,1[10C13%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m       so you may not define subcomponents such as "Valves" at this level.[m[31;125H[K[31;125H50,1[10C14%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m       Documentation at /docs/config/service.html[m[31;125H[K[31;125H51,1[10C15%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m   -->[m[31;125H[K[31;125H52,1[10C16%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<Service [m[32mname[m=[31m"Catalina"[m[36m>[m[31;125H[K[31;125H53,1[10C16%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H54,0-1[8C17%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[34m<!--The connectors can use a shared executor, you can define one or more named thread pools-->[m[31;125H[K[31;125H55,1[10C18%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[34m<!--[m[31;125H[K[31;125H56,1[10C18%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"[m[31;125H[K[31;125H57,1[10C19%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m        maxThreads="150" minSpareThreads="4"/>[m[31;125H[K[31;125H58,1[10C20%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m    -->[m[31;125H[K[31;125H59,1[10C21%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H60,0-1[8C21%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H61,0-1[8C22%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[34m<!-- A "Connector" represents an endpoint by which requests are received[m[31;125H[K[31;125H62,1[10C23%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         and responses are returned. Documentation at :[m[31;125H[K[31;125H63,1[10C24%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         Java HTTP Connector: /docs/config/http.html[m[31;125H[K[31;125H64,1[10C24%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         Java AJP  Connector: /docs/config/ajp.html[m[31;125H[K[31;125H65,1[10C25%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         APR (HTTP/AJP) Connector: /docs/apr.html[m[31;125H[K[31;125H66,1[10C26%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m         Define a non-SSL/TLS HTTP/1.1 Connector on port 8080[m[31;125H[K[31;125H67,1[10C27%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m    -->[m[31;125H[K[31;125H68,1[10C27%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;5H[36m<Connector [m[32mport[m=[31m"8080"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[31;125H[K[31;125H69,1[10C28%[30;1H[?12l[?25h[?25l
+[1m-- INSERT --[m[31;125H[K[31;125H69,1[10C28%[30;1H[?12l[?25h[?25l[31;128H2[30;2H[?12l[?25h[?25l[31;128H3[30;3H[?12l[?25h[?25l[31;128H4[30;4H[?12l[?25h[?25l[31;128H5[30;5H[?12l[?25h[?25l[31;128H6[30;6H[?12l[?25h[?25l[31;128H7[30;7H[?12l[?25h[?25l[31;128H8[30;8H[?12l[?25h[?25l[31;128H9[30;9H[?12l[?25h[?25l[31;128H10[30;10H[?12l[?25h[?25l[31;129H1[30;11H[?12l[?25h[?25l[31;129H2[30;12H[?12l[?25h[?25l[31;129H3[30;13H[?12l[?25h[?25l[31;129H4[30;14H[?12l[?25h[?25l[31;129H5[30;15H[?12l[?25h[?25l[31;129H6[30;16H[?12l[?25h[?25l[31;129H7[30;17H[?12l[?25h[?25l[31;129H8[30;18H[?12l[?25h[?25l[31;129H9[30;19H[?12l[?25h[?25l[31;128H20[30;20H[?12l[?25h[?25l[31;129H1[30;21H[?12l[?25h[?25l[31;129H2[30;22H[?12l[?25h[?25l[31;129H3[30;23H[?12l[?25h[?25l[31;129H4[30;24H[?12l[?25h[?25l[31;129H5[30;25H[?12l[?25h[?25l[31;129H6[30;26H[?12l[?25h[?25l[31m"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;46H[K[31;129H5[30;25H[?12l[?25h[?25l[31m"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;45H[K[31;129H4[30;24H[?12l[?25h[?25l[31m"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;44H[K[31;129H3[30;23H[?12l[?25h[?25l[31m"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;43H[K[31;129H2[30;22H[?12l[?25h[?25l[31m{"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[31;129H3[30;23H[?12l[?25h[?25l[31m{"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[31;129H4[30;24H[?12l[?25h[?25l[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;23H[31m[106m{}[m[31;129H5[30;25H[?12l[?25h[?25l[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;22H[31m[106m{[m[31m{}[m[31m[106m}[m[31;129H6[30;26H[?12l[?25h[?25l[31;129H5[30;25H[?12l[?25h[?25l[31m{[m[31m[106m{}[m[31m}[m[31;129H4[30;24H[?12l[?25h[?25l[31m[106ms[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;24Hs[m[31m[106m}[m[31;129H5[30;25H[?12l[?25h[?25l[31m[106me[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;25He[m[31m[106m}[m[31;129H6[30;26H[?12l[?25h[?25l[31m[106mr[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;26Hr[m[31m[106m}[m[31;129H7[30;27H[?12l[?25h[?25l[31m[106mv[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;27Hv[m[31m[106m}[m[31;129H8[30;28H[?12l[?25h[?25l[31m[106me[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;28He[m[31m[106m}[m[31;129H9[30;29H[?12l[?25h[?25l[31m[106mr[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;29Hr[m[31m[106m}[m[31;128H30[30;30H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;52H[K[30;29H[31m[106m}[m[31m}[m[31;128H29[30;29H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;51H[K[30;28H[31m[106m}[m[31m}[m[31;129H8[30;28H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;50H[K[30;27H[31m[106m}[m[31m}[m[31;129H7[30;27H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;49H[K[30;26H[31m[106m}[m[31m}[m[31;129H6[30;26H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;48H[K[30;25H[31m[106m}[m[31m}[m[31;129H5[30;25H[?12l[?25h[?25l[31m}[1C"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[m[30;47H[K[30;24H[31m[106m}[m[31m}[m[31;129H4[30;24H[?12l[?25h[?25l[31m[106mt[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;24Ht[m[31m[106m}[m[31;129H5[30;25H[?12l[?25h[?25l[31m[106mo[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;25Ho[m[31m[106m}[m[31;129H6[30;26H[?12l[?25h[?25l[31m[106mm[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;26Hm[m[31m[106m}[m[31;129H7[30;27H[?12l[?25h[?25l[31m[106mc[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;27Hc[m[31m[106m}[m[31;129H8[30;28H[?12l[?25h[?25l[31m[106ma[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;28Ha[m[31m[106m}[m[31;129H9[30;29H[?12l[?25h[?25l[31m[106mt[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;29Ht[m[31m[106m}[m[31;128H30[30;30H[?12l[?25h[?25l[31m[106m_[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;30H_[m[31m[106m}[m[31;129H1[30;31H[?12l[?25h[?25l[31m[106mp[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;31Hp[m[31m[106m}[m[31;129H2[30;32H[?12l[?25h[?25l[31m[106mo[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;32Ho[m[31m[106m}[m[31;129H3[30;33H[?12l[?25h[?25l[31m[106mr[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;33Hr[m[31m[106m}[m[31;129H4[30;34H[?12l[?25h[?25l[31m[106mt[m[1C[31m}"[m[36m [m[32mprotocol[m=[31m"HTTP/1.1"[30;34Ht[m[31m[106m}[m[31;129H5[30;35H[?12l[?25h[31;1H[K[30;34H[?25l[30;23H[31m{[11C}[m[31;125H69,34[9C28%[30;34H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"server.xml.j2" 167L, 7522C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cp server.xml.j2 roles/tomcat/ap[K[Kte
+templates/ tests/     
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cp server.xml.j2 roles/tomcat/te
+templates/ tests/     
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cp server.xml.j2 roles/tomcat/te
+templates/ tests/     
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cp server.xml.j2 roles/tomcat/templates/[K
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ tree roles/tomcat/
+[01;34mroles/tomcat/[00m
+├── [01;34mdefaults[00m
+│   └── main.yml
+├── [01;34mfiles[00m
+│   └── [01;31mapache-tomcat-8.5.27.tar.gz[00m
+├── [01;34mhandlers[00m
+│   └── main.yml
+├── [01;34mmeta[00m
+│   └── main.yml
+├── README.md
+├── [01;34mtasks[00m
+│   └── main.yml
+├── [01;34mtemplates[00m
+│   └── server.xml.j2
+├── [01;34mtests[00m
+│   ├── inventory
+│   └── test.yml
+├── tomcat.yml
+└── [01;34mvars[00m
+    └── main.yml
+
+8 directories, 11 files
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ tree roles/tomcat/cp server.xml.j2 roles/tomcat/templates[22Pvi server.xml.j2 ls[Kmv server.xml server.xml.j2[5Pgit push origin masterremote show origin[Kcommit -m"pushing maven proj for devops CI-CD pipeline"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cremote[K show originpush origin mastermv server.xml server.xml.j2ls[Kvi server.xml.j2 cp server.xml.j2 roles/tomcat/templates[21Ptree roles/tomcat/[Ktree roles/tomcat/cp server.xml.j2 roles/tomcat/templates[22Pvi server.xml.j2 ls[Kmv server.xml server.xml.j2[5Pgit push origin masterremote show origin[Kcommit -m"pushing maven proj for devops CI-CD pipeline"[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cstatus[Kremote add origin https://github.com/aish77/Maven-Web-project-Devops-CI-CD.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cremove origin[Kadd origin https://github.com/aish77/Maven-Web-project-Devops-CI-CD.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ..[K[3Plscd targetls[Kcd ILP-Bookstore/git push origin master[12Pstatusremote show origin[Kadd origin https://github.com/aish77/Basic-Servlets.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[22Phttps://github.com/aish77/Basic-Servlets.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pgit remote remove origin[K originhttps://github.com/aish77/Basic-Servlets.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit remote add origin https://github.com/aish77/Basic-Servlets.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cshow[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kvi roles/tomcat/tasks/main.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" 25L, 715C[>c[27m[23m[m[H[2J[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server/xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  shell:/home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"roles/tomcat/tasks/main.yml" 25L, 715C[85C   [11C   [1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;1H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"roles/tomcat/tasks/main.yml" 25L, 715C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi roles/tomcat/tasks/main.yml [13Ptree roles/tomcat/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcp apa[K[K[Ktomcat/apache-tomcat-8.5.27/ap[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kansible-playbook roles/toma[Kcat/tomcat.yml 
+[0;31mERROR! Syntax Error while loading YAML.[0m
+[0;31m[0m
+[0;31m[0m
+[0;31mThe error appears to have been in '/home/osgdev/ansiblehands/roles/tomcat/tasks/main.yml': line 26, column 1, but may[0m
+[0;31mbe elsewhere in the file depending on the exact syntax problem.[0m
+[0;31m[0m
+[0;31m(specified line no longer in file, maybe it changed?)[0m
+[0;31mexception type: <class 'yaml.scanner.ScannerError'>[0m
+[0;31mexception: while scanning a simple key[0m
+[0;31m  in "<unicode string>", line 24, column 3[0m
+[0;31mcould not find expected ':'[0m
+[0;31m  in "<unicode string>", line 26, column 1[0m
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pvi roles/tomcat/tasks/main[C[C[C[C[C
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" 25L, 715C[>c[27m[23m[m[H[2J[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server/xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  shell:/home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"roles/tomcat/tasks/main.yml" 25L, 715C[85C   [11C   [1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;13H[K[31;125H1,1[11CAll[1;1H[?12l[?25h[?25l[31;125H2[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9[9;1H[?12l[?25h[?25l[31;125H10,1[10;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H2[12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7[17;1H[?12l[?25h[?25l[31;126H8[18;1H[?12l[?25h[?25l[31;126H9[19;1H[?12l[?25h[?25l[31;125H20[20;1H[?12l[?25h[?25l[31;126H1[21;1H[?12l[?25h[?25l[31;126H2[22;1H[?12l[?25h[?25l[31;126H3[23;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;126H5[25;1H[?12l[?25h[31;1H[K[25;1H[?25l[31;125H25,1[10CAll[25;1H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[31;1H[K[31;1H[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi roles/tomcat/tasks/main.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" 25L, 715C[>c[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server/xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  shell:/home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server/xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  shell:/home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"roles/tomcat/tasks/main.yml" 25L, 715C[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;125H2[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7,0-1[7;1H[?12l[?25h[?25l[31;125H8,1  [8;1H[?12l[?25h[?25l[31;125H9[9;1H[?12l[?25h[?25l[31;125H10,1[10;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H2,0-1[12;1H[?12l[?25h[?25l[31;126H3,1  [13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7,0-1[17;1H[?12l[?25h[?25l[31;126H8,1  [18;1H[?12l[?25h[?25l[31;126H9[19;1H[?12l[?25h[?25l[31;125H20[20;1H[?12l[?25h[?25l[31;126H1[21;1H[?12l[?25h[?25l[31;126H2,0-1[22;1H[?12l[?25h[?25l[31;126H3,1  [23;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;126H5[25;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;126H3[23;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;128H2[24;2H[?12l[?25h[?25l[31;128H3[24;3H[?12l[?25h[?25l[31;128H4[24;4H[?12l[?25h[?25l[31;128H5[24;5H[?12l[?25h[?25l[31;128H6[24;6H[?12l[?25h[?25l[31;128H7[24;7H[?12l[?25h[?25l[31;128H8[24;8H[?12l[?25h[?25l[31;128H9[24;9H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;13H[K[31;125H24,9[10CAll[24;9H[?12l[?25h[?25l[31;128H8[24;8H[?12l[?25h[?25l[31;128H9[24;9H[?12l[?25h[?25l  [36mshell[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh[31;128H10[24;10H[?12l[?25h[31;1H[K[24;9H[?25l[31;125H24,9[10CAll[24;9H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"roles/tomcat/tasks/main.yml" 25L, 716C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi roles/tomcat/tasks/main.yml [10@ansible-playbook roles/tomcat/tomcat[C[C[C[C[C
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;31mfatal: [localhost]: FAILED! => {"changed": false, "msg": "AnsibleUndefinedVariable: 'tomcat_port' is undefined"}[0m
+	to retry, use: --limit @/home/osgdev/ansiblehands/roles/tomcat/tomcat.retry
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;31mlocalhost[0m                  : [0;32mok=3   [0m changed=0    unreachable=0    [0;31mfailed=1   [0m
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat[K[K[Kcd roles/tomcat/vars/
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles/tomcat/vars[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles/tomcat/vars[00m$ ls
+main.yml
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles/tomcat/vars[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles/tomcat/vars[00m$ vi main.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"main.yml" [noeol] 2L, 32C[>c[1;1H[35m---[m
+[34m# vars file for roles/tomcat[m
+[94m~                                                                                                                                             [4;1H~                                                                                                                                             [5;1H~                                                                                                                                             [6;1H~                                                                                                                                             [7;1H~                                                                                                                                             [8;1H~                                                                                                                                             [9;1H~                                                                                                                                             [10;1H~                                                                                                                                             [11;1H~                                                                                                                                             [12;1H~                                                                                                                                             [13;1H~                                                                                                                                             [14;1H~                                                                                                                                             [15;1H~                                                                                                                                             [16;1H~                                                                                                                                             [17;1H~                                                                                                                                             [18;1H~                                                                                                                                             [19;1H~                                                                                                                                             [20;1H~                                                                                                                                             [21;1H~                                                                                                                                             [22;1H~                                                                                                                                             [23;1H~                                                                                                                                             [24;1H~                                                                                                                                             [25;1H~                                                                                                                                             [26;1H~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[1;1H[35m---[m
+[34m# vars file for roles/tomcat[m
+[94m~                                                                                                                                             [4;1H~                                                                                                                                             [5;1H~                                                                                                                                             [6;1H~                                                                                                                                             [7;1H~                                                                                                                                             [8;1H~                                                                                                                                             [9;1H~                                                                                                                                             [10;1H~                                                                                                                                             [11;1H~                                                                                                                                             [12;1H~                                                                                                                                             [13;1H~                                                                                                                                             [14;1H~                                                                                                                                             [15;1H~                                                                                                                                             [16;1H~                                                                                                                                             [17;1H~                                                                                                                                             [18;1H~                                                                                                                                             [19;1H~                                                                                                                                             [20;1H~                                                                                                                                             [21;1H~                                                                                                                                             [22;1H~                                                                                                                                             [23;1H~                                                                                                                                             [24;1H~                                                                                                                                             [25;1H~                                                                                                                                             [26;1H~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"main.yml" [noeol] 2L, 32C[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;13H[K[31;125H1,1[11CAll[1;1H[?12l[?25h[?25l[31;125H2[2;1H[?12l[?25h[?25l[31;127H2[2;2H[?12l[?25h[?25l[31;127H3[2;3H[?12l[?25h[?25l[31;127H4[2;4H[?12l[?25h[?25l[31;127H5[2;5H[?12l[?25h[?25l[31;127H6[2;6H[?12l[?25h[?25l[31;127H7[2;7H[?12l[?25h[?25l[31;127H8[2;8H[?12l[?25h[?25l[31;127H9[2;9H[?12l[?25h[?25l[31;127H10[2;10H[?12l[?25h[?25l[31;128H1[2;11H[?12l[?25h[?25l[31;128H2[2;12H[?12l[?25h[?25l[31;128H3[2;13H[?12l[?25h[?25l[31;128H4[2;14H[?12l[?25h[?25l[31;128H5[2;15H[?12l[?25h[?25l[31;128H6[2;16H[?12l[?25h[?25l[31;128H7[2;17H[?12l[?25h[?25l[31;128H8[2;18H[?12l[?25h[?25l[31;128H9[2;19H[?12l[?25h[?25l[31;127H20[2;20H[?12l[?25h[?25l[31;128H1[2;21H[?12l[?25h[?25l[31;128H2[2;22H[?12l[?25h[?25l[31;128H3[2;23H[?12l[?25h[?25l[31;128H4[2;24H[?12l[?25h[?25l[31;128H5[2;25H[?12l[?25h[?25l[31;128H6[2;26H[?12l[?25h[?25l[31;128H7[2;27H[?12l[?25h[?25l[31;128H8[2;28H[?12l[?25h[?25l[31;128H9[2;29H[?12l[?25h[?25l[3;1H[K[31;125H3,1 [3;1H[?12l[?25h[?25lt[31;127H2[3;2H[?12l[?25h[?25lo[31;127H3[3;3H[?12l[?25h[?25lm[31;127H4[3;4H[?12l[?25h[?25lc[31;127H5[3;5H[?12l[?25h[?25la[31;127H6[3;6H[?12l[?25h[?25lt[31;127H7[3;7H[?12l[?25h[?25l_[31;127H8[3;8H[?12l[?25h[?25lp[31;127H9[3;9H[?12l[?25h[?25lo[31;127H10[3;10H[?12l[?25h[?25lr[31;128H1[3;11H[?12l[?25h[?25lt[31;128H2[3;12H[?12l[?25h[?25l[36mtomcat_port[m[35m:[m[31;128H3[3;13H[?12l[?25h[?25l[31;128H4[3;14H[?12l[?25h[?25l[31m8[m[31;128H5[3;15H[?12l[?25h[?25l[31m0[m[31;128H6[3;16H[?12l[?25h[?25l[31m0[m[31;128H7[3;17H[?12l[?25h[?25l[31m0[m[31;128H8[3;18H[?12l[?25h[31;1H[K[3;17H[?25l[31;125H3,17[10CAll[3;17H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"main.yml" 3L, 51C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles/tomcat/vars[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles/tomcat/vars[00m$ vi main.yml ls[Kcd roles/tomcat/vars/ansible-playbook roles/tomcat/tomcat.yml 
+[0;31mERROR! the playbook: roles/tomcat/tomcat.yml could not be found[0m
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles/tomcat/vars[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles/tomcat/vars[00m$ cd ..
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles/tomcat[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles/tomcat[00m$ cd ..
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands/roles[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands/roles[00m$ cd ..
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cd ..ansible-playbook roles/tomcat/tomcat.yml 
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;31mfatal: [localhost]: FAILED! => {"changed": false, "checksum": "a6a4b27b9a21645223dffd3594780dd484ba6cab", "msg": "Destination directory /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server does not exist"}[0m
+	to retry, use: --limit @/home/osgdev/ansiblehands/roles/tomcat/tomcat.retry
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;31mlocalhost[0m                  : [0;32mok=3   [0m changed=0    unreachable=0    [0;31mfailed=1   [0m
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ..[Kansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvi main.yml [Kls[Kcd roles/tomcat/vars/ansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pvi roles/tomcat/tasks/main[C[C[C[C[C
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" 25L, 716C[>c[27m[23m[m[H[2J[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server/xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  [36mshell[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"roles/tomcat/tasks/main.yml" 25L, 716C[85C   [11C   [1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;13H[K[31;125H1,1[11CAll[1;1H[?12l[?25h[?25l[31;125H2[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9[9;1H[?12l[?25h[?25l[31;125H10,1[10;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H2[12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;128H2[16;2H[?12l[?25h[?25l[31;128H3[16;3H[?12l[?25h[?25l[31;128H4[16;4H[?12l[?25h[?25l[31;128H5[16;5H[?12l[?25h[?25l[31;128H6[16;6H[?12l[?25h[?25l[31;128H7[16;7H[?12l[?25h[?25l[31;128H8[16;8H[?12l[?25h[?25l[31;128H9[16;9H[?12l[?25h[?25l[31;128H10[16;10H[?12l[?25h[?25l[31;129H1[16;11H[?12l[?25h[?25l[31;129H2[16;12H[?12l[?25h[?25l[31;129H3[16;13H[?12l[?25h[?25l[31;129H4[16;14H[?12l[?25h[?25l[31;129H5[16;15H[?12l[?25h[?25l[31;129H6[16;16H[?12l[?25h[?25l[31;129H7[16;17H[?12l[?25h[?25l[31;129H8[16;18H[?12l[?25h[?25l[31;129H9[16;19H[?12l[?25h[?25l[31;128H20[16;20H[?12l[?25h[?25l[31;129H1[16;21H[?12l[?25h[?25l[31;129H2[16;22H[?12l[?25h[?25l[31;129H3[16;23H[?12l[?25h[?25l[31;129H4[16;24H[?12l[?25h[?25l[31;129H5[16;25H[?12l[?25h[?25l[31;129H6[16;26H[?12l[?25h[?25l[31;129H7[16;27H[?12l[?25h[?25l[31;129H8[16;28H[?12l[?25h[?25l[31;129H9[16;29H[?12l[?25h[?25l[31;128H30[16;30H[?12l[?25h[?25l[31;129H1[16;31H[?12l[?25h[?25l[31;129H2[16;32H[?12l[?25h[?25l[31;129H3[16;33H[?12l[?25h[?25l[31;129H4[16;34H[?12l[?25h[?25l[31;129H5[16;35H[?12l[?25h[?25l[31;129H6[16;36H[?12l[?25h[?25l[31;129H7[16;37H[?12l[?25h[?25l[31;129H8[16;38H[?12l[?25h[?25l[31;129H9[16;39H[?12l[?25h[?25l[31;128H40[16;40H[?12l[?25h[?25l[31;129H1[16;41H[?12l[?25h[?25l[31;129H2[16;42H[?12l[?25h[?25l[31;129H3[16;43H[?12l[?25h[?25l[31;129H4[16;44H[?12l[?25h[?25l[31;129H5[16;45H[?12l[?25h[?25l[31;129H6[16;46H[?12l[?25h[?25l[31;129H7[16;47H[?12l[?25h[?25l[31;129H8[16;48H[?12l[?25h[?25l[31;129H9[16;49H[?12l[?25h[?25l[31;128H50[16;50H[?12l[?25h[?25l[31;129H1[16;51H[?12l[?25h[?25l[31;129H2[16;52H[?12l[?25h[?25l[31;129H3[16;53H[?12l[?25h[?25l[31;129H4[16;54H[?12l[?25h[?25l[31;129H5[16;55H[?12l[?25h[?25l[31;129H6[16;56H[?12l[?25h[?25l[31;129H7[16;57H[?12l[?25h[?25l[31;129H8[16;58H[?12l[?25h[?25l[31;129H9[16;59H[?12l[?25h[?25l[31;128H60[16;60H[?12l[?25h[?25l[31;129H1[16;61H[?12l[?25h[?25l[31;129H2[16;62H[?12l[?25h[?25l[31;129H3[16;63H[?12l[?25h[?25l[31;129H4[16;64H[?12l[?25h[?25l[31;129H5[16;65H[?12l[?25h[?25l[31;129H6[16;66H[?12l[?25h[?25l[31;129H7[16;67H[?12l[?25h[?25l[31;129H8[16;68H[?12l[?25h[?25l[31;129H9[16;69H[?12l[?25h[?25l[31;128H70[16;70H[?12l[?25h[?25l[31;129H1[16;71H[?12l[?25h[?25l[31;129H2[16;72H[?12l[?25h[?25l[31;129H3[16;73H[?12l[?25h[?25l[31;129H4[16;74H[?12l[?25h[?25l[31;129H5[16;75H[?12l[?25h[?25l[31;129H6[16;76H[?12l[?25h[?25lxml[16;78H[K[31;129H5[16;75H[?12l[?25h[?25l.xml[31;129H6[16;76H[?12l[?25h[31;1H[K[16;75H[?25l[31;125H16,75[9CAll[16;75H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"roles/tomcat/tasks/main.yml" 25L, 716C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi roles/tomcat/tasks/main.yml [10@ansible-playbook roles/tomcat/tomcat[C[C[C[C[C
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Deploy the war file in the Webapps directory] *********************************************************************************
+[0;31mAn exception occurred during task execution. To see the full traceback, use -vvv. The error was: AnsibleFileNotFound: Could not find or access '/home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war'[0m
+[0;31mfatal: [localhost]: FAILED! => {"changed": false, "msg": "Could not find or access '/home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war'"}[0m
+	to retry, use: --limit @/home/osgdev/ansiblehands/roles/tomcat/tomcat.retry
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;31mlocalhost[0m                  : [0;32mok=4   [0m [0;33mchanged=1   [0m unreachable=0    [0;31mfailed=1   [0m
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cp homw[Ke[K[K[K[K/home/BookS[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd ..
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ ls
+[0m[01;34mansiblehands[0m      [01;34mDevops_Git[0m     [01;34meclipse[0m                  [01;34mMusic[0m          [01;34mmytomcat[0m  [01;34mservlets[0m           [01;34mTRIAL[0m
+[01;34map[0m                [01;34mdockerHandson[0m  [01;34meclipse-workspace[0m        [01;34mmvn-proj[0m       [01;34mPictures[0m  [34;42msonar-scanner-3.2[0m  [37;44mtsclient[0m
+[01;34mapache7[0m           [01;34mdoclab[0m         [01;34meclipse-workspace391167[0m  [01;34mmyArtifactory[0m  [01;34mPostman[0m   sources.list       [01;34mVideos[0m
+[01;34mBookstoreWarfile[0m  [01;34mDocuments[0m      [01;34mILP-Bookstore[0m            [01;34mmyEditor[0m       [01;34mPublic[0m    [01;34mTemplates[0m          wgetrc.bak
+[01;34mDesktop[0m           [01;34mDownloads[0m      [01;34mjenkinplugin[0m             [01;34mmySonarQube[0m    [01;34mresource[0m  tokengitlab        [01;34mworkspace[0m
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ B[Kcd ABo[K[K[KBookstoreWarfile/
+]0;osgdev@TG-Devops-OS067: ~/BookstoreWarfile[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/BookstoreWarfile[00m$ cd ..
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ cd BookstoreWarfile/
+]0;osgdev@TG-Devops-OS067: ~/BookstoreWarfile[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/BookstoreWarfile[00m$ ls
+[0m[01;31mILP-0.0.1-20190411.192309-16.war[0m
+]0;osgdev@TG-Devops-OS067: ~/BookstoreWarfile[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/BookstoreWarfile[00m$ cp . /home/ansiblehands/roles/tomcat/files
+cp: omitting directory '.'
+]0;osgdev@TG-Devops-OS067: ~/BookstoreWarfile[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/BookstoreWarfile[00m$ cp . /home/ansiblehands/roles/tomcat/filesls[Kcd BookstoreWarfile/..[KBookstoreWarfile/ls[Kcd ..ansible-playbook roles/tomcat/tomcat.yml [10Pvi roles/tomcat/tasks/main[C[C[C[C[C
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" [New DIRECTORY][>c[2;1H[94m~                                                                                                                                             [3;1H~                                                                                                                                             [4;1H~                                                                                                                                             [5;1H~                                                                                                                                             [6;1H~                                                                                                                                             [7;1H~                                                                                                                                             [8;1H~                                                                                                                                             [9;1H~                                                                                                                                             [10;1H~                                                                                                                                             [11;1H~                                                                                                                                             [12;1H~                                                                                                                                             [13;1H~                                                                                                                                             [14;1H~                                                                                                                                             [15;1H~                                                                                                                                             [16;1H~                                                                                                                                             [17;1H~                                                                                                                                             [18;1H~                                                                                                                                             [19;1H~                                                                                                                                             [20;1H~                                                                                                                                             [21;1H~                                                                                                                                             [22;1H~                                                                                                                                             [23;1H~                                                                                                                                             [24;1H~                                                                                                                                             [25;1H~                                                                                                                                             [26;1H~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H0,0-1[9CAll[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[2;1H[94m~                                                                                                                                             [3;1H~                                                                                                                                             [4;1H~                                                                                                                                             [5;1H~                                                                                                                                             [6;1H~                                                                                                                                             [7;1H~                                                                                                                                             [8;1H~                                                                                                                                             [9;1H~                                                                                                                                             [10;1H~                                                                                                                                             [11;1H~                                                                                                                                             [12;1H~                                                                                                                                             [13;1H~                                                                                                                                             [14;1H~                                                                                                                                             [15;1H~                                                                                                                                             [16;1H~                                                                                                                                             [17;1H~                                                                                                                                             [18;1H~                                                                                                                                             [19;1H~                                                                                                                                             [20;1H~                                                                                                                                             [21;1H~                                                                                                                                             [22;1H~                                                                                                                                             [23;1H~                                                                                                                                             [24;1H~                                                                                                                                             [25;1H~                                                                                                                                             [26;1H~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H0,0-1[9CAll"roles/tomcat/tasks/main.yml" [New DIRECTORY][1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;1HEntering Ex mode.  Type "visual" to go to Normal mode.[31;125H[K[?12l[?25h[31;1H
+:q!
+[?1l>[?1049l]0;osgdev@TG-Devops-OS067: ~/BookstoreWarfile[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/BookstoreWarfile[00m$ cd ..
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ cd and[Ksiblehands/
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cd ansiblehands/..[Kvi roles/tomcat/tasks/main.yml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"roles/tomcat/tasks/main.yml" 25L, 716C[>c[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server.xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  [36mshell[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[1;1H[35m---[m
+[34m# tasks file for roles/tomcat[m
+[38;5;130m- [m[36mname[m[35m:[m Create the target folder
+  [36mfile[m[35m:[m
+   [36mpath[m[35m:[m /home/osgdev/ansiblehands/tomcat
+   [36mstate[m[35m:[m directory
+
+[38;5;130m- [m[36mname[m[35m:[m Install Tomcat
+  [36munarchive[m[35m:[m
+   [36msrc[m[35m:[m apache-tomcat-8.5.27.tar.gz
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat
+
+[38;5;130m- [m[36mname[m[35m:[m Configure the port address
+  [36mtemplate[m[35m:[m
+   [36msrc[m[35m:[m server.xml.j2
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server.xml
+
+[38;5;130m- [m[36mname[m[35m:[m Deploy the war file in the Webapps directory
+  [36mcopy[m[35m:[m
+   [36msrc[m[35m:[m /home/BookstoreWarfile/ILP-0.0.1-20190411.192309-16.war
+   [36mdest[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+[38;5;130m- [m[36mname[m[35m:[m Start the tomcat server
+  [36mshell[m[35m:[m /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh
+
+[94m~                                                                                                                                             [27;1H~                                                                                                                                             [28;1H~                                                                                                                                             [29;1H~                                                                                                                                             [30;1H~                                                                                                                                             [m[31;125H1,1[11CAll"roles/tomcat/tasks/main.yml" 25L, 716C[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;1H[1m-- INSERT --[m[31;13H[K[31;125H1,1[11CAll[1;1H[?12l[?25h[?25l[31;125H2[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9[9;1H[?12l[?25h[?25l[31;125H10,1[10;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H2[12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7[17;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H2[12;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H0[10;1H[?12l[?25h[?25l[31;125H9,1 [9;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9[9;1H[?12l[?25h[?25l[31;125H10,1[10;1H[?12l[?25h[?25l[31;126H1[11;1H[?12l[?25h[?25l[31;126H2[12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7[17;1H[?12l[?25h[?25l[31;126H8[18;1H[?12l[?25h[?25l[31;126H9[19;1H[?12l[?25h[?25l[31;125H20[20;1H[?12l[?25h[?25l[31;128H2[20;2H[?12l[?25h[?25l[31;128H3[20;3H[?12l[?25h[?25l[31;128H4[20;4H[?12l[?25h[?25l[31;128H5[20;5H[?12l[?25h[?25l[31;128H6[20;6H[?12l[?25h[?25l[31;128H7[20;7H[?12l[?25h[?25l[31;128H8[20;8H[?12l[?25h[?25l[31;128H9[20;9H[?12l[?25h[?25l[31;128H10[20;10H[?12l[?25h[?25l[31;129H1[20;11H[?12l[?25h[?25l[31;129H2[20;12H[?12l[?25h[?25l[31;129H3[20;13H[?12l[?25h[?25l[31;129H4[20;14H[?12l[?25h[?25l[31;129H5[20;15H[?12l[?25h[?25l[31;129H6[20;16H[?12l[?25h[?25l[31;129H7[20;17H[?12l[?25h[?25l[31;129H8[20;18H[?12l[?25h[?25l[31;129H9[20;19H[?12l[?25h[?25l[31;128H20[20;20H[?12l[?25h[?25l[31;129H1[20;21H[?12l[?25h[?25l[31;129H2[20;22H[?12l[?25h[?25l[31;129H3[20;23H[?12l[?25h[?25l[31;129H4[20;24H[?12l[?25h[?25l[31;129H5[20;25H[?12l[?25h[?25l[31;129H6[20;26H[?12l[?25h[?25l[31;129H7[20;27H[?12l[?25h[?25l[31;129H8[20;28H[?12l[?25h[?25l[31;129H9[20;29H[?12l[?25h[?25l[31;128H30[20;30H[?12l[?25h[?25l[31;129H1[20;31H[?12l[?25h[?25l[31;129H2[20;32H[?12l[?25h[?25l[31;129H3[20;33H[?12l[?25h[?25l[31;129H4[20;34H[?12l[?25h[?25l[31;129H5[20;35H[?12l[?25h[?25l[31;129H6[20;36H[?12l[?25h[?25l[31;129H7[20;37H[?12l[?25h[?25l[31;129H8[20;38H[?12l[?25h[?25l[31;129H9[20;39H[?12l[?25h[?25l[31;128H40[20;40H[?12l[?25h[?25l[31;129H1[20;41H[?12l[?25h[?25l[31;129H2[20;42H[?12l[?25h[?25l[31;129H3[20;43H[?12l[?25h[?25l[31;129H4[20;44H[?12l[?25h[?25l[31;129H5[20;45H[?12l[?25h[?25l[31;129H6[20;46H[?12l[?25h[?25l[31;129H7[20;47H[?12l[?25h[?25l[31;129H8[20;48H[?12l[?25h[?25l[31;129H9[20;49H[?12l[?25h[?25l[31;128H50[20;50H[?12l[?25h[?25l[31;129H1[20;51H[?12l[?25h[?25l[31;129H2[20;52H[?12l[?25h[?25l[31;129H3[20;53H[?12l[?25h[?25l[31;129H4[20;54H[?12l[?25h[?25l[31;129H5[20;55H[?12l[?25h[?25l[31;129H6[20;56H[?12l[?25h[?25l[31;129H7[20;57H[?12l[?25h[?25l[31;129H8[20;58H[?12l[?25h[?25l[31;129H9[20;59H[?12l[?25h[?25l[31;128H60[20;60H[?12l[?25h[?25l[31;129H1[20;61H[?12l[?25h[?25l[31;129H2[20;62H[?12l[?25h[?25l[31;129H3[20;63H[?12l[?25h[?25l[31;129H4[20;64H[?12l[?25h[?25l[20;63H[K[31;129H3[20;63H[?12l[?25h[?25l[20;62H[K[31;129H2[20;62H[?12l[?25h[?25l[20;61H[K[31;129H1[20;61H[?12l[?25h[?25l[20;60H[K[31;129H0[20;60H[?12l[?25h[?25l[20;59H[K[31;128H59[20;59H[?12l[?25h[?25l[20;58H[K[31;129H8[20;58H[?12l[?25h[?25l[20;57H[K[31;129H7[20;57H[?12l[?25h[?25l[20;56H[K[31;129H6[20;56H[?12l[?25h[?25l[20;55H[K[31;129H5[20;55H[?12l[?25h[?25l[20;54H[K[31;129H4[20;54H[?12l[?25h[?25l[20;53H[K[31;129H3[20;53H[?12l[?25h[?25l[20;52H[K[31;129H2[20;52H[?12l[?25h[?25l[20;51H[K[31;129H1[20;51H[?12l[?25h[?25l[20;50H[K[31;129H0[20;50H[?12l[?25h[?25l[20;49H[K[31;128H49[20;49H[?12l[?25h[?25l[20;48H[K[31;129H8[20;48H[?12l[?25h[?25l[20;47H[K[31;129H7[20;47H[?12l[?25h[?25l[20;46H[K[31;129H6[20;46H[?12l[?25h[?25l[20;45H[K[31;129H5[20;45H[?12l[?25h[?25l[20;44H[K[31;129H4[20;44H[?12l[?25h[?25l[20;43H[K[31;129H3[20;43H[?12l[?25h[?25l[20;42H[K[31;129H2[20;42H[?12l[?25h[?25l[20;41H[K[31;129H1[20;41H[?12l[?25h[?25l[20;40H[K[31;129H0[20;40H[?12l[?25h[?25l[20;39H[K[31;128H39[20;39H[?12l[?25h[?25l[20;38H[K[31;129H8[20;38H[?12l[?25h[?25l[20;35H[K[31;129H5[20;35H[?12l[?25h[?25l[20;34H[K[31;129H4[20;34H[?12l[?25h[?25l[20;33H[K[31;129H3[20;33H[?12l[?25h[?25l[20;32H[K[31;129H2[20;32H[?12l[?25h[?25l[20;31H[K[31;129H1[20;31H[?12l[?25h[?25l[20;30H[K[31;129H0[20;30H[?12l[?25h[?25l[20;29H[K[31;128H29[20;29H[?12l[?25h[?25l[20;28H[K[31;129H8[20;28H[?12l[?25h[?25l[20;27H[K[31;129H7[20;27H[?12l[?25h[?25l[20;26H[K[31;129H6[20;26H[?12l[?25h[?25l[20;25H[K[31;129H5[20;25H[?12l[?25h[?25l[20;24H[K[31;129H4[20;24H[?12l[?25h[?25l[20;23H[K[31;129H3[20;23H[?12l[?25h[?25l[20;22H[K[31;129H2[20;22H[?12l[?25h[?25l[20;21H[K[31;129H1[20;21H[?12l[?25h[?25l[20;20H[K[31;129H0[20;20H[?12l[?25h[?25l[20;19H[K[31;128H19[20;19H[?12l[?25h[?25l[20;18H[K[31;129H8[20;18H[?12l[?25h[?25l[20;17H[K[31;129H7[20;17H[?12l[?25h[?25l[20;16H[K[31;129H6[20;16H[?12l[?25h[?25l[20;15H[K[31;129H5[20;15H[?12l[?25h[?25l[20;14H[K[31;129H4[20;14H[?12l[?25h[?25l[20;13H[K[31;129H3[20;13H[?12l[?25h[?25l[20;12H[K[31;129H2[20;12H[?12l[?25h[?25l[20;11H[K[31;129H1[20;11H[?12l[?25h[?25l[20;10H[K[31;129H0[20;10H[?12l[?25h[?25l[20;9H[K[31;128H9 [20;9H[?12l[?25h[?25l[21;30r[21;1H[L[1;31r[20;9HILP-0.0.1-20190411.192309-16.war[31;125H[K[31;125H21,1[10CAll[21;1H[?12l[?25h[?25l[20;30r[30;1H
+[1;31r[20;4H[36msrc[m[35m:[m ILP-0.0.1-20190411.192309-16.war[30;1H[94m~                                                                                                                                             [m[31;125H[K[31;125H20,41[9CAll[20;41H[?12l[?25h[31;1H[K[20;40H[?25l[31;125H20,40[9CAll[20;40H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l"roles/tomcat/tasks/main.yml" 25L, 693C written
+[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ vi roles/tomcat/tasks/main.yml [15Pcd ansiblehands/..[Kvi roles/tomcat/tasks/main.yml cp . /home/ansiblehands/roles/tomcat/files[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd BookstoreWarfile/..[KBookstoreWarfile/ls[Kcd ..ansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pvi roles/tomcat/tasks/main[C[C[C[C[C[10@ansible-playbook roles/tomcat/tomcat[C[C[C[C[C
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Deploy the war file in the Webapps directory] *********************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Start the tomcat server] ******************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;33mlocalhost[0m                  : [0;32mok=6   [0m [0;33mchanged=4   [0m unreachable=0    failed=0   
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml 
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Deploy the war file in the Webapps directory] *********************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Start the tomcat server] ******************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;33mlocalhost[0m                  : [0;32mok=6   [0m [0;33mchanged=3   [0m unreachable=0    failed=0   
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pvi roles/tomcat/tasks/main[C[C[C[C[C[15Pcd ansiblehands/..[Kvi roles/tomcat/tasks/main.yml cp . /home/ansiblehands/roles/tomcat/files[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd BookstoreWarfile/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ksudo opt/tom[K[K[K[K[K[K[K[K[K[K[K[Kcd ..
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ sudo opt/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh
+[sudo] password for osgdev: 
+sudo: opt/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh: command not found
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ sudo opt/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C/opt/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Using CATALINA_BASE:   /opt/tomcat/apache-tomcat-8.5.27
+Using CATALINA_HOME:   /opt/tomcat/apache-tomcat-8.5.27
+Using CATALINA_TMPDIR: /opt/tomcat/apache-tomcat-8.5.27/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /opt/tomcat/apache-tomcat-8.5.27/bin/bootstrap.jar:/opt/tomcat/apache-tomcat-8.5.27/bin/tomcat-juli.jar
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ sudo /opt/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ch/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Co/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Catomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cntomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cstomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Citomcat/apache-tomcat-8.5.27/bin/shutdown.sh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtomcat/apache-tomcat-8.5.27/bin/shutdown.shltomcat/apache-tomcat-8.5.27/bin/shutdown.shetomcat/apache-tomcat-8.5.27/bin/shutdown.shhtomcat/apache-tomcat-8.5.27/bin/shutdown.shatomcat/apache-tomcat-8.5.27/bin/shutdown.shntomcat/apache-tomcat-8.5.27/bin/shutdown.shdtomcat/apache-tomcat-8.5.27/bin/shutdown.shstomcat/apache-tomcat-8.5.27/bin/shutdown.sh/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh
+sudo: /home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh: command not found
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ sudo /home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh[1P/home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh
+bash: /home/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/shutdown.sh: No such file or directory
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ cd opt
+bash: cd: opt: No such file or directory
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ sudo [K[K[K[K[Kls
+[0m[01;34mansiblehands[0m      [01;34mDevops_Git[0m     [01;34meclipse[0m                  [01;34mMusic[0m          [01;34mmytomcat[0m  [01;34mservlets[0m           [01;34mTRIAL[0m
+[01;34map[0m                [01;34mdockerHandson[0m  [01;34meclipse-workspace[0m        [01;34mmvn-proj[0m       [01;34mPictures[0m  [34;42msonar-scanner-3.2[0m  [37;44mtsclient[0m
+[01;34mapache7[0m           [01;34mdoclab[0m         [01;34meclipse-workspace391167[0m  [01;34mmyArtifactory[0m  [01;34mPostman[0m   sources.list       [01;34mVideos[0m
+[01;34mBookstoreWarfile[0m  [01;34mDocuments[0m      [01;34mILP-Bookstore[0m            [01;34mmyEditor[0m       [01;34mPublic[0m    [01;34mTemplates[0m          wgetrc.bak
+[01;34mDesktop[0m           [01;34mDownloads[0m      [01;34mjenkinplugin[0m             [01;34mmySonarQube[0m    [01;34mresource[0m  tokengitlab        [01;34mworkspace[0m
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ ls -a
+[0m[01;34m.[0m                 [01;34m.cache[0m         [01;34mDocuments[0m                [01;34m.java[0m          .mysql_history     [01;34mservlets[0m                   [37;44mtsclient[0m
+[01;34m..[0m                [01;34m.cf[0m            [01;34mDownloads[0m                [01;34mjenkinplugin[0m   [01;34mmytomcat[0m           [01;34m.sonar[0m                     [01;34mVideos[0m
+[01;34m.ansible[0m          [01;34m.compiz[0m        [01;34meclipse[0m                  [01;34m.jenkins[0m       [01;34m.nano[0m              [34;42msonar-scanner-3.2[0m          .viminfo
+.ansible_galaxy   [01;34m.config[0m        [01;34m.eclipse[0m                 [01;34m.local[0m         [01;34m.oracle_jre_usage[0m  sources.list               [01;34m.vnc[0m
+[01;34mansiblehands[0m      [01;34m.dbus[0m          [01;34meclipse-workspace[0m        [01;34m.m2[0m            [01;34m.p2[0m                [01;34m.ssh[0m                       .wget-hsts
+[01;34map[0m                [01;34mDesktop[0m        [01;34meclipse-workspace391167[0m  [01;34m.mozilla[0m       [01;34mPictures[0m           .sudo_as_admin_successful  wgetrc.bak
+[01;34mapache7[0m           [01;34mDevops_Git[0m     [01;34m.gconf[0m                   [01;34mMusic[0m          [01;34m.pki[0m               [01;34m.swt[0m                       [01;34mworkspace[0m
+.bash_history     .dmrc          .gksu.lock               [01;34mmvn-proj[0m       [01;34mPostman[0m            [01;34mTemplates[0m                  .Xauthority
+.bash_logout      [01;34m.docker[0m        [01;34m.gnupg[0m                   [01;34mmyArtifactory[0m  .profile           tokengitlab                .xsession
+.bashrc           [01;34mdockerHandson[0m  .ICEauthority            [01;34mmyEditor[0m       [01;34mPublic[0m             [01;34m.tooling[0m                   .xsession-errors
+[01;34mBookstoreWarfile[0m  [01;34mdoclab[0m         [01;34mILP-Bookstore[0m            [01;34mmySonarQube[0m    [01;34mresource[0m           [01;34mTRIAL[0m                      .xsession-errors.old
+]0;osgdev@TG-Devops-OS067: ~[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~[00m$ cd op[K[K[K /opt/
+]0;osgdev@TG-Devops-OS067: /opt[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt[00m$ ls
+[0m[01;34mapache-maven-3.5.2[0m  [01;31mapache-maven-3.5.2-bin.tar.gz[0m  [01;34meclipse[0m  index.html  [01;31mjenkins_2.89.3_all.deb[0m  [01;34mjfrog[0m  [01;34mtomcat[0m
+]0;osgdev@TG-Devops-OS067: /opt[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt[00m$ cd tomcat/
+]0;osgdev@TG-Devops-OS067: /opt/tomcat[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat[00m$ ls
+[0m[34;42mapache-tomcat-8.5.27[0m
+]0;osgdev@TG-Devops-OS067: /opt/tomcat[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat[00m$ cd apache-tomcat-8.5.27/
+]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27[00m$ ls
+[0m[34;42mbin[0m  [34;42mconf[0m  [34;42mlib[0m  [01;32mLICENSE[0m  [34;42mlogs[0m  [01;32mNOTICE[0m  [01;32mRELEASE-NOTES[0m  [01;32mRUNNING.txt[0m  [34;42mtemp[0m  [34;42mwebapps[0m  [34;42mwork[0m
+]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27[00m$ cd conf/
+]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27/conf[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27/conf[00m$ ci[K[Kvi server.xml 
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"server.xml" 167L, 7511C[>c[1;1H[34m<?[m[32mxml version[m=[31m"1.0"[m[32m encoding[m=[31m"UTF-8"[m[34m?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->[m
+[36m<Server [m[32mport[m=[31m"7005"[m[36m [m[32mshutdown[m=[31m"SHUTDOWN"[m[36m>
+[m  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.startup.VersionLoggerListener"[m[36m />[m
+  [34m<!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+[m  [34m<!--APR library loader. Documentation at /docs/apr.html -->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.AprLifecycleListener"[m[36m [m[32mSSLEngine[m=[31m"on"[m[36m />[m
+  [34m<!-- Prevent memory leaks due to use of particular java/javax APIs-->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.JreMemoryLeakPreventionListener"[m[36m />[m[31;125H1,1[11CTop[1;1H[?12l[?25h[27m[23m[m[H[2J[?25l[1;1H[34m<?[m[32mxml version[m=[31m"1.0"[m[32m encoding[m=[31m"UTF-8"[m[34m?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->[m
+[36m<Server [m[32mport[m=[31m"7005"[m[36m [m[32mshutdown[m=[31m"SHUTDOWN"[m[36m>
+[m  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.startup.VersionLoggerListener"[m[36m />[m
+  [34m<!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+[m  [34m<!--APR library loader. Documentation at /docs/apr.html -->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.AprLifecycleListener"[m[36m [m[32mSSLEngine[m=[31m"on"[m[36m />[m
+  [34m<!-- Prevent memory leaks due to use of particular java/javax APIs-->[m
+  [36m<Listener [m[32mclassName[m=[31m"org.apache.catalina.core.JreMemoryLeakPreventionListener"[m[36m />[m[31;125H1,1[11CTop"server.xml" 167L, 7511C[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12l[?25h[?25l[31;1H[K[31;1H:[?12l[?25hQ[?25l[?12l[?25h[?25l[97m[41mE492: Not an editor command: Q[m[94C1,1[11CTop[1;1H[?12l[?25h[?25l[31;1H[K[31;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[31;1H[K[31;1H[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27/conf[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27/conf[00m$ ls
+[0m[34;42mCatalina[0m         [01;32mcatalina.properties[0m  [01;32mjaspic-providers.xml[0m  [01;32mlogging.properties[0m  [01;32mtomcat-users.xml[0m  [01;32mweb.xml[0m
+[01;32mcatalina.policy[0m  [01;32mcontext.xml[0m          [01;32mjaspic-providers.xsd[0m  [01;32mserver.xml[0m          [01;32mtomcat-users.xsd[0m
+]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27/conf[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27/conf[00m$ vi tomcat-users.xsd[K[Kml
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H]11;?[1;31r[?12;25h[?12l[?25h[27m[23m[m[H[2J[?25l[31;1H"tomcat-users.xml" 43L, 2044C[>c[27m[23m[m[H[2J[1;1H[34m<?[m[32mxml version[m=[31m"1.0"[m[32m encoding[m=[31m"UTF-8"[m[34m?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->[m
+[36m<tomcat-users [m[32mxmlns[m=[31m"http://tomcat.apache.org/xml"[m
+[36m              [m[32mxmlns[m[34m:[m[32mxsi[m=[31m"http://www.w3.org/2001/XMLSchema-instance"[m
+[36m              [m[32mxsi[m[34m:[m[32mschemaLocation[m=[31m"http://tomcat.apache.org/xml tomcat-users.xsd"[m
+[36m              [m[32mversion[m=[31m"1.0"[m[36m>[m
+[34m<!--
+  NOTE:  By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary. It is
+  strongly recommended that you do NOT use one of the users in the commented out
+  section below since they are intended for use with the examples web
+  application.
+-->
+<!--[m[31;125H1,1[11CTop"tomcat-users.xml" 43L, 2044C[95C   [11C   [1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;125H2,1[11CTop[2;1H[?12l[?25h[?25l[31;125H3[3;1H[?12l[?25h[?25l[31;125H4[4;1H[?12l[?25h[?25l[31;125H5[5;1H[?12l[?25h[?25l[31;125H6[6;1H[?12l[?25h[?25l[31;125H7[7;1H[?12l[?25h[?25l[31;125H8[8;1H[?12l[?25h[?25l[31;125H9,0-1[9;1H[?12l[?25h[?25l[31;125H10,1 [10;1H[?12l[?25h[?25l[31;126H1,0-1[11;1H[?12l[?25h[?25l[31;126H2,1  [12;1H[?12l[?25h[?25l[31;126H3[13;1H[?12l[?25h[?25l[31;126H4[14;1H[?12l[?25h[?25l[31;126H5[15;1H[?12l[?25h[?25l[31;126H6[16;1H[?12l[?25h[?25l[31;126H7[17;1H[?12l[?25h[?25l[31;126H8[18;1H[?12l[?25h[?25l[31;126H9[19;1H[?12l[?25h[?25l[31;125H20[20;1H[?12l[?25h[?25l[31;126H1[21;1H[?12l[?25h[?25l[31;126H2[22;1H[?12l[?25h[?25l[31;126H3[23;1H[?12l[?25h[?25l[31;126H4[24;1H[?12l[?25h[?25l[31;126H5[25;1H[?12l[?25h[?25l[31;126H6[26;1H[?12l[?25h[?25l[31;126H7[27;1H[?12l[?25h[?25l[31;126H8[28;1H[?12l[?25h[?25l[31;126H9[29;1H[?12l[?25h[?25l[31;125H30[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  NOTE:  The sample user and role entries below are intended for use with the[m[31;1H[K[31;125H31,1[11C7%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  examples web application. They are wrapped in a comment and thus are ignored[m[31;125H[K[31;125H32,1[10C15%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  when reading this file. If you wish to configure these users for use with the[m[31;125H[K[31;125H33,1[10C23%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  examples web application, do not forget to remove the <!.. ..> that surrounds[m[31;125H[K[31;125H34,1[10C30%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m  them. You will also need to set the passwords to something appropriate.[m[31;125H[K[31;125H35,1[10C38%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[34m-->[m[31;125H[K[31;125H36,1[10C46%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H37,0-1[8C53%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<role [m[32mrolename[m=[31m"manager-gui"[m[36m/>[m[31;125H[K[31;125H38,1[10C61%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<role [m[32mrolename[m=[31m"manager-script"[m[36m/>[m[31;125H[K[31;125H39,1[10C69%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;3H[36m<user [m[32musername[m=[31m"admin"[m[36m [m[32mpassword[m=[31m"admin"[m[36m [m[32mroles[m=[31m"admin-gui, manager-gui,manager-script"[m[36m/>[m[31;125H[K[31;125H40,1[10C76%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H41,0-1[8C84%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[31;125H[K[31;125H42,0-1[8C92%[30;1H[?12l[?25h[?25l[1;30r[30;1H
+[1;31r[30;1H[36m</tomcat-users>[m[31;125H[K[31;125H43,1[10CBot[30;1H[?12l[?25h[?25l[31;126H2,0-1[29;1H[?12l[?25h[?25l[31;126H1[28;1H[?12l[?25h[?25l[31;126H0,1  [27;1H[?12l[?25h[?25l[31;125H39[26;1H[?12l[?25h[?25l[31;126H8[25;1H[?12l[?25h[?25l[31;126H7,0-1[24;1H[?12l[?25h[?25l[31;126H6,1  [23;1H[?12l[?25h[?25l[31;126H5[22;1H[?12l[?25h[?25l[31;126H4[21;1H[?12l[?25h[?25l[31;126H3[20;1H[?12l[?25h[?25l[31;126H2[19;1H[?12l[?25h[?25l[31;126H1[18;1H[?12l[?25h[?25l[31;126H0[17;1H[?12l[?25h[?25l[31;125H29[16;1H[?12l[?25h[?25l[31;126H8[15;1H[?12l[?25h[?25l[31;126H7[14;1H[?12l[?25h[?25l[31;126H6[13;1H[?12l[?25h[?25l[31;126H5[12;1H[?12l[?25h[?25l[31;126H4[11;1H[?12l[?25h[?25l[31;126H3[10;1H[?12l[?25h[?25l[31;126H2[9;1H[?12l[?25h[?25l[31;126H1[8;1H[?12l[?25h[?25l[31;126H0[7;1H[?12l[?25h[?25l[31;125H19[6;1H[?12l[?25h[?25l[31;125H20[7;1H[?12l[?25h[?25l[31;126H1[8;1H[?12l[?25h[?25l[31;126H2[9;1H[?12l[?25h[?25l[31;126H3[10;1H[?12l[?25h[?25l[31;126H4[11;1H[?12l[?25h[?25l[31;126H5[12;1H[?12l[?25h[?25l[31;126H6[13;1H[?12l[?25h[?25l[31;126H7[14;1H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;125H[K[31;125H27,1[10CBot[14;1H[?12l[?25h[31;1H[K[14;1H[?25l[31;125H27,1[10CBot[14;1H[?12l[?25h[?25l[31;125H[K[31;1H:[?12l[?25hQ[?25l[?12l[?25h![?25l[?12l[?25h[?25l[97m[41mE492: Not an editor command: Q![m[93C27,1[10CBot[14;1H[?12l[?25h[?25l[31;1H[K[31;1H:[?12l[?25hq[?25l[?12l[?25h![?25l[?12l[?25h[?25l[31;1H[K[31;1H[?1l>[?12l[?25h[?1049l]0;osgdev@TG-Devops-OS067: /opt/tomcat/apache-tomcat-8.5.27/conf[01;32mosgdev@TG-Devops-OS067[00m:[01;34m/opt/tomcat/apache-tomcat-8.5.27/conf[00m$ exit
+exit
+
+Script done on Tuesday 23 April 2019 09:05:30 PM IST

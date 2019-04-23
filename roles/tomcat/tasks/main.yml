@@ -9,4 +9,17 @@
   unarchive:
    src: apache-tomcat-8.5.27.tar.gz
    dest: /home/osgdev/ansiblehands/tomcat 
+
+- name: Configure the port address
+  template: 
+   src: server.xml.j2
+   dest: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server.xml
+
+- name: Deploy the war file in the Webapps directory
+  copy:
+   src: ILP-0.0.1-20190411.192309-16.war
+   dest: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+- name: Start the tomcat server
+  shell: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh  
   
