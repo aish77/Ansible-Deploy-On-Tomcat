@@ -1,0 +1,1188 @@
+Script started on Tuesday 23 April 2019 09:13:03 PM IST
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ tree roles/tomcat/
+[01;34mroles/tomcat/[00m
+├── [01;34mdefaults[00m
+│   └── main.yml
+├── [01;34mfiles[00m
+│   ├── [01;31mapache-tomcat-8.5.27.tar.gz[00m
+│   └── [01;31mILP-0.0.1-20190411.192309-16.war[00m
+├── [01;34mhandlers[00m
+│   └── main.yml
+├── [01;34mmeta[00m
+│   └── main.yml
+├── README.md
+├── [01;34mtasks[00m
+│   └── main.yml
+├── [01;34mtemplates[00m
+│   └── server.xml.j2
+├── [01;34mtests[00m
+│   ├── inventory
+│   └── test.yml
+├── tomcat.retry
+├── tomcat.yml
+└── [01;34mvars[00m
+    └── main.yml
+
+8 directories, 13 files
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ifconfig
+br-2791e584cab1 Link encap:Ethernet  HWaddr 02:42:1b:99:10:00  
+          inet addr:172.18.0.1  Bcast:172.18.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+docker0   Link encap:Ethernet  HWaddr 02:42:a7:c1:38:5e  
+          inet addr:172.17.0.1  Bcast:172.17.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::42:a7ff:fec1:385e/64 Scope:Link
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:258 (258.0 B)
+
+docker_gwbridge Link encap:Ethernet  HWaddr 02:42:be:ae:83:14  
+          inet addr:172.19.0.1  Bcast:172.19.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::42:beff:feae:8314/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:432 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:424 (424.0 B)  TX bytes:92377 (92.3 KB)
+
+ens160    Link encap:Ethernet  HWaddr 00:50:56:a0:75:d9  
+          inet addr:10.199.1.47  Bcast:10.199.15.255  Mask:255.255.240.0
+          inet6 addr: fe80::250:56ff:fea0:75d9/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:191961452 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6963243 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:25936339211 (25.9 GB)  TX bytes:2077534766 (2.0 GB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:23129956 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:23129956 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:2194174400 (2.1 GB)  TX bytes:2194174400 (2.1 GB)
+
+veth3dc11ce Link encap:Ethernet  HWaddr f2:bd:71:a2:9b:2d  
+          inet6 addr: fe80::f0bd:71ff:fea2:9b2d/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:460 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:95880 (95.8 KB)
+
+veth51dc3da Link encap:Ethernet  HWaddr ca:06:66:5c:1e:5f  
+          inet6 addr: fe80::c806:66ff:fe5c:1e5f/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:460 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:95880 (95.8 KB)
+
+veth9bdac6d Link encap:Ethernet  HWaddr 26:d2:9c:4b:4d:06  
+          inet6 addr: fe80::24d2:9cff:fe4b:4d06/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:467 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:536 (536.0 B)  TX bytes:96502 (96.5 KB)
+
+vethab10760 Link encap:Ethernet  HWaddr 6e:78:17:36:33:60  
+          inet6 addr: fe80::6c78:17ff:fe36:3360/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:454 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:95049 (95.0 KB)
+
+vethab939f7 Link encap:Ethernet  HWaddr 3e:49:02:4e:99:e5  
+          inet6 addr: fe80::3c49:2ff:fe4e:99e5/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:460 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:95880 (95.8 KB)
+
+vethbe16732 Link encap:Ethernet  HWaddr d2:a0:64:5a:dc:e7  
+          inet6 addr: fe80::d0a0:64ff:fe5a:dce7/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:460 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:95880 (95.8 KB)
+
+vethfe16f3e Link encap:Ethernet  HWaddr b6:3b:ab:71:8f:9c  
+          inet6 addr: fe80::b43b:abff:fe71:8f9c/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:490 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:100012 (100.0 KB)
+
+virbr0    Link encap:Ethernet  HWaddr 00:00:00:00:00:00  
+          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat roles/tomcat/tasks/main.yml 
+---
+# tasks file for roles/tomcat
+- name: Create the target folder
+  file:
+   path: /home/osgdev/ansiblehands/tomcat
+   state: directory
+
+- name: Install Tomcat
+  unarchive:
+   src: apache-tomcat-8.5.27.tar.gz
+   dest: /home/osgdev/ansiblehands/tomcat 
+
+- name: Configure the port address
+  template: 
+   src: server.xml.j2
+   dest: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/conf/server.xml
+
+- name: Deploy the war file in the Webapps directory
+  copy:
+   src: ILP-0.0.1-20190411.192309-16.war
+   dest: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/webapps
+
+- name: Start the tomcat server
+  shell: /home/osgdev/ansiblehands/tomcat/apache-tomcat-8.5.27/bin/startup.sh  
+  
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat roles/tomcat/vars/main.yml 
+---
+# vars file for roles/tomcat
+tomcat_port: 8000
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat roles/tomcat/files/[C[1P roles/tomcat/files/[1P roles/tomcat/files/[1P roles/tomcat/files/l roles/tomcat/files/s roles/tomcat/files/
+[0m[01;31mapache-tomcat-8.5.27.tar.gz[0m  [01;31mILP-0.0.1-20190411.192309-16.war[0m
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcat roles/tomcat/tomcat.yml
+- hosts: localhost
+  roles:
+  - tomcat
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat roles/tomcat/templates/ma[C[1P roles/tomcat/templates/ma[1P roles/tomcat/templates/ma[1P roles/tomcat/templates/mal roles/tomcat/templates/mas roles/tomcat/templates/ma[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pa[C[K[K
+server.xml.j2
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ cat server.xml.j2 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+  <!--APR library loader. Documentation at /docs/apr.html -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  <!-- Prevent memory leaks due to use of particular java/javax APIs-->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  <!-- Global JNDI resources
+       Documentation at /docs/jndi-resources-howto.html
+  -->
+  <GlobalNamingResources>
+    <!-- Editable user database that can also be used by
+         UserDatabaseRealm to authenticate users
+    -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+
+  <!-- A "Service" is a collection of one or more "Connectors" that share
+       a single "Container" Note:  A "Service" is not itself a "Container",
+       so you may not define subcomponents such as "Valves" at this level.
+       Documentation at /docs/config/service.html
+   -->
+  <Service name="Catalina">
+
+    <!--The connectors can use a shared executor, you can define one or more named thread pools-->
+    <!--
+    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+        maxThreads="150" minSpareThreads="4"/>
+    -->
+
+
+    <!-- A "Connector" represents an endpoint by which requests are received
+         and responses are returned. Documentation at :
+         Java HTTP Connector: /docs/config/http.html
+         Java AJP  Connector: /docs/config/ajp.html
+         APR (HTTP/AJP) Connector: /docs/apr.html
+         Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
+    -->
+    <Connector port="{{tomcat_port}}" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    <!-- A "Connector" using the shared thread pool-->
+    <!--
+    <Connector executor="tomcatThreadPool"
+               port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    -->
+    <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443
+         This connector uses the NIO implementation. The default
+         SSLImplementation will depend on the presence of the APR/native
+         library and the useOpenSSL attribute of the
+         AprLifecycleListener.
+         Either JSSE or OpenSSL style configuration may be used regardless of
+         the SSLImplementation selected. JSSE style configuration is used below.
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true">
+        <SSLHostConfig>
+            <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+    <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443 with HTTP/2
+         This connector uses the APR/native implementation which always uses
+         OpenSSL for TLS.
+         Either JSSE or OpenSSL style configuration may be used. OpenSSL style
+         configuration is used below.
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
+               maxThreads="150" SSLEnabled="true" >
+        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+        <SSLHostConfig>
+            <Certificate certificateKeyFile="conf/localhost-rsa-key.pem"
+                         certificateFile="conf/localhost-rsa-cert.pem"
+                         certificateChainFile="conf/localhost-rsa-chain.pem"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+
+    <!-- Define an AJP 1.3 Connector on port 8009 -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+
+
+    <!-- An Engine represents the entry point (within Catalina) that processes
+         every request.  The Engine implementation for Tomcat stand alone
+         analyzes the HTTP headers included with the request, and passes them
+         on to the appropriate Host (virtual host).
+         Documentation at /docs/config/engine.html -->
+
+    <!-- You should set jvmRoute to support load-balancing via AJP ie :
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <!--For clustering, please take a look at documentation at:
+          /docs/cluster-howto.html  (simple how to)
+          /docs/config/cluster.html (reference documentation) -->
+      <!--
+      <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
+      -->
+
+      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
+           via a brute-force attack -->
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <!-- This Realm uses the UserDatabase configured in the global JNDI
+             resources under the key "UserDatabase".  Any edits
+             that are performed against this UserDatabase are immediately
+             available for use by the Realm.  -->
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+      </Realm>
+
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+        <!-- SingleSignOn valve, share authentication between web applications
+             Documentation at: /docs/config/valve.html -->
+        <!--
+        <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+        -->
+
+        <!-- Access log processes all example.
+             Documentation at: /docs/config/valve.html
+             Note: The pattern used is equivalent to using pattern="common" -->
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log" suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ tree tomcat/
+[01;34mtomcat/[00m
+└── [01;34mapache-tomcat-8.5.27[00m
+    ├── [01;34mbin[00m
+    │   ├── [01;31mbootstrap.jar[00m
+    │   ├── catalina.bat
+    │   ├── [01;32mcatalina.sh[00m
+    │   ├── catalina-tasks.xml
+    │   ├── [01;31mcommons-daemon.jar[00m
+    │   ├── [01;31mcommons-daemon-native.tar.gz[00m
+    │   ├── configtest.bat
+    │   ├── [01;32mconfigtest.sh[00m
+    │   ├── [01;32mdaemon.sh[00m
+    │   ├── digest.bat
+    │   ├── [01;32mdigest.sh[00m
+    │   ├── setclasspath.bat
+    │   ├── [01;32msetclasspath.sh[00m
+    │   ├── shutdown.bat
+    │   ├── [01;32mshutdown.sh[00m
+    │   ├── startup.bat
+    │   ├── [01;32mstartup.sh[00m
+    │   ├── [01;31mtomcat-juli.jar[00m
+    │   ├── [01;31mtomcat-native.tar.gz[00m
+    │   ├── tool-wrapper.bat
+    │   ├── [01;32mtool-wrapper.sh[00m
+    │   ├── version.bat
+    │   └── [01;32mversion.sh[00m
+    ├── [01;34mconf[00m
+    │   ├── [01;34mCatalina[00m
+    │   │   └── [01;34mlocalhost[00m
+    │   ├── catalina.policy
+    │   ├── catalina.properties
+    │   ├── context.xml
+    │   ├── jaspic-providers.xml
+    │   ├── jaspic-providers.xsd
+    │   ├── logging.properties
+    │   ├── server.xml
+    │   ├── tomcat-users.xml
+    │   ├── tomcat-users.xsd
+    │   └── web.xml
+    ├── [01;34mlib[00m
+    │   ├── [01;31mannotations-api.jar[00m
+    │   ├── [01;31mcatalina-ant.jar[00m
+    │   ├── [01;31mcatalina-ha.jar[00m
+    │   ├── [01;31mcatalina.jar[00m
+    │   ├── [01;31mcatalina-storeconfig.jar[00m
+    │   ├── [01;31mcatalina-tribes.jar[00m
+    │   ├── [01;31mecj-4.6.3.jar[00m
+    │   ├── [01;31mel-api.jar[00m
+    │   ├── [01;31mjasper-el.jar[00m
+    │   ├── [01;31mjasper.jar[00m
+    │   ├── [01;31mjaspic-api.jar[00m
+    │   ├── [01;31mjsp-api.jar[00m
+    │   ├── [01;31mservlet-api.jar[00m
+    │   ├── [01;31mtomcat-api.jar[00m
+    │   ├── [01;31mtomcat-coyote.jar[00m
+    │   ├── [01;31mtomcat-dbcp.jar[00m
+    │   ├── [01;31mtomcat-i18n-es.jar[00m
+    │   ├── [01;31mtomcat-i18n-fr.jar[00m
+    │   ├── [01;31mtomcat-i18n-ja.jar[00m
+    │   ├── [01;31mtomcat-jdbc.jar[00m
+    │   ├── [01;31mtomcat-jni.jar[00m
+    │   ├── [01;31mtomcat-util.jar[00m
+    │   ├── [01;31mtomcat-util-scan.jar[00m
+    │   ├── [01;31mtomcat-websocket.jar[00m
+    │   └── [01;31mwebsocket-api.jar[00m
+    ├── LICENSE
+    ├── [01;34mlogs[00m
+    │   ├── catalina.2019-04-23.log
+    │   ├── catalina.out
+    │   ├── host-manager.2019-04-23.log
+    │   ├── localhost.2019-04-23.log
+    │   ├── localhost_access_log.2019-04-23.txt
+    │   └── manager.2019-04-23.log
+    ├── NOTICE
+    ├── RELEASE-NOTES
+    ├── RUNNING.txt
+    ├── [01;34mtemp[00m
+    │   └── safeToDelete.tmp
+    ├── [01;34mwebapps[00m
+    │   ├── [01;34mdocs[00m
+    │   │   ├── aio.html
+    │   │   ├── [01;34mapi[00m
+    │   │   │   └── index.html
+    │   │   ├── [01;34mappdev[00m
+    │   │   │   ├── build.xml.txt
+    │   │   │   ├── deployment.html
+    │   │   │   ├── index.html
+    │   │   │   ├── installation.html
+    │   │   │   ├── introduction.html
+    │   │   │   ├── processes.html
+    │   │   │   ├── [01;34msample[00m
+    │   │   │   │   ├── build.xml
+    │   │   │   │   ├── [01;34mdocs[00m
+    │   │   │   │   │   └── README.txt
+    │   │   │   │   ├── index.html
+    │   │   │   │   ├── [01;31msample.war[00m
+    │   │   │   │   ├── [01;34msrc[00m
+    │   │   │   │   │   └── [01;34mmypackage[00m
+    │   │   │   │   │       └── Hello.java
+    │   │   │   │   └── [01;34mweb[00m
+    │   │   │   │       ├── hello.jsp
+    │   │   │   │       ├── [01;34mimages[00m
+    │   │   │   │       │   └── [01;35mtomcat.gif[00m
+    │   │   │   │       ├── index.html
+    │   │   │   │       └── [01;34mWEB-INF[00m
+    │   │   │   │           └── web.xml
+    │   │   │   ├── source.html
+    │   │   │   └── web.xml.txt
+    │   │   ├── apr.html
+    │   │   ├── [01;34marchitecture[00m
+    │   │   │   ├── index.html
+    │   │   │   ├── overview.html
+    │   │   │   ├── [01;34mrequestProcess[00m
+    │   │   │   │   ├── [01;35mauthentication-process.png[00m
+    │   │   │   │   └── [01;35mrequest-process.png[00m
+    │   │   │   ├── requestProcess.html
+    │   │   │   ├── [01;34mstartup[00m
+    │   │   │   │   ├── serverStartup.pdf
+    │   │   │   │   └── serverStartup.txt
+    │   │   │   └── startup.html
+    │   │   ├── balancer-howto.html
+    │   │   ├── building.html
+    │   │   ├── BUILDING.txt
+    │   │   ├── cgi-howto.html
+    │   │   ├── changelog.html
+    │   │   ├── class-loader-howto.html
+    │   │   ├── cluster-howto.html
+    │   │   ├── comments.html
+    │   │   ├── [01;34mconfig[00m
+    │   │   │   ├── ajp.html
+    │   │   │   ├── automatic-deployment.html
+    │   │   │   ├── cluster-channel.html
+    │   │   │   ├── cluster-deployer.html
+    │   │   │   ├── cluster.html
+    │   │   │   ├── cluster-interceptor.html
+    │   │   │   ├── cluster-listener.html
+    │   │   │   ├── cluster-manager.html
+    │   │   │   ├── cluster-membership.html
+    │   │   │   ├── cluster-receiver.html
+    │   │   │   ├── cluster-sender.html
+    │   │   │   ├── cluster-valve.html
+    │   │   │   ├── context.html
+    │   │   │   ├── cookie-processor.html
+    │   │   │   ├── credentialhandler.html
+    │   │   │   ├── engine.html
+    │   │   │   ├── executor.html
+    │   │   │   ├── filter.html
+    │   │   │   ├── globalresources.html
+    │   │   │   ├── host.html
+    │   │   │   ├── http2.html
+    │   │   │   ├── http.html
+    │   │   │   ├── index.html
+    │   │   │   ├── jar-scan-filter.html
+    │   │   │   ├── jar-scanner.html
+    │   │   │   ├── jaspic.html
+    │   │   │   ├── listeners.html
+    │   │   │   ├── loader.html
+    │   │   │   ├── manager.html
+    │   │   │   ├── realm.html
+    │   │   │   ├── resources.html
+    │   │   │   ├── server.html
+    │   │   │   ├── service.html
+    │   │   │   ├── sessionidgenerator.html
+    │   │   │   ├── systemprops.html
+    │   │   │   └── valve.html
+    │   │   ├── connectors.html
+    │   │   ├── default-servlet.html
+    │   │   ├── deployer-howto.html
+    │   │   ├── developers.html
+    │   │   ├── [01;34melapi[00m
+    │   │   │   └── index.html
+    │   │   ├── extras.html
+    │   │   ├── [01;34mfuncspecs[00m
+    │   │   │   ├── fs-admin-apps.html
+    │   │   │   ├── fs-admin-objects.html
+    │   │   │   ├── fs-admin-opers.html
+    │   │   │   ├── fs-default.html
+    │   │   │   ├── fs-jdbc-realm.html
+    │   │   │   ├── fs-jndi-realm.html
+    │   │   │   ├── fs-memory-realm.html
+    │   │   │   ├── index.html
+    │   │   │   └── mbean-names.html
+    │   │   ├── html-manager-howto.html
+    │   │   ├── [01;34mimages[00m
+    │   │   │   ├── [01;35madd.gif[00m
+    │   │   │   ├── [01;35masf-logo.svg[00m
+    │   │   │   ├── [01;35mcode.gif[00m
+    │   │   │   ├── [01;35mcors-flowchart.png[00m
+    │   │   │   ├── [01;35mdesign.gif[00m
+    │   │   │   ├── [01;35mdocs.gif[00m
+    │   │   │   ├── docs-stylesheet.css
+    │   │   │   ├── [01;35mfix.gif[00m
+    │   │   │   ├── [01;34mfonts[00m
+    │   │   │   │   ├── fonts.css
+    │   │   │   │   ├── OpenSans400italic.woff
+    │   │   │   │   ├── OpenSans400.woff
+    │   │   │   │   ├── OpenSans600italic.woff
+    │   │   │   │   ├── OpenSans600.woff
+    │   │   │   │   ├── OpenSans700italic.woff
+    │   │   │   │   └── OpenSans700.woff
+    │   │   │   ├── [01;35mprinter.gif[00m
+    │   │   │   ├── [01;35mtomcat.gif[00m
+    │   │   │   ├── [01;35mtomcat.png[00m
+    │   │   │   ├── [01;35mtomcat.svg[00m
+    │   │   │   ├── [01;35mupdate.gif[00m
+    │   │   │   └── [01;35mvoid.gif[00m
+    │   │   ├── index.html
+    │   │   ├── introduction.html
+    │   │   ├── jasper-howto.html
+    │   │   ├── jdbc-pool.html
+    │   │   ├── jndi-datasource-examples-howto.html
+    │   │   ├── jndi-resources-howto.html
+    │   │   ├── [01;34mjspapi[00m
+    │   │   │   └── index.html
+    │   │   ├── logging.html
+    │   │   ├── manager-howto.html
+    │   │   ├── maven-jars.html
+    │   │   ├── mbeans-descriptors.dtd
+    │   │   ├── mbeans-descriptors-howto.html
+    │   │   ├── monitoring.html
+    │   │   ├── proxy-howto.html
+    │   │   ├── realm-howto.html
+    │   │   ├── RELEASE-NOTES.txt
+    │   │   ├── rewrite.html
+    │   │   ├── RUNNING.txt
+    │   │   ├── security-howto.html
+    │   │   ├── security-manager-howto.html
+    │   │   ├── [01;34mservletapi[00m
+    │   │   │   └── index.html
+    │   │   ├── setup.html
+    │   │   ├── ssi-howto.html
+    │   │   ├── ssl-howto.html
+    │   │   ├── [01;34mtribes[00m
+    │   │   │   ├── developers.html
+    │   │   │   ├── faq.html
+    │   │   │   ├── interceptors.html
+    │   │   │   ├── introduction.html
+    │   │   │   ├── membership.html
+    │   │   │   ├── setup.html
+    │   │   │   ├── status.html
+    │   │   │   └── transport.html
+    │   │   ├── virtual-hosting-howto.html
+    │   │   ├── [01;34mWEB-INF[00m
+    │   │   │   └── web.xml
+    │   │   ├── [01;34mwebsocketapi[00m
+    │   │   │   └── index.html
+    │   │   ├── web-socket-howto.html
+    │   │   ├── windows-auth-howto.html
+    │   │   └── windows-service-howto.html
+    │   ├── [01;34mexamples[00m
+    │   │   ├── index.html
+    │   │   ├── [01;34mjsp[00m
+    │   │   │   ├── [01;34masync[00m
+    │   │   │   │   ├── async1.jsp
+    │   │   │   │   ├── async1.jsp.html
+    │   │   │   │   ├── async3.jsp
+    │   │   │   │   ├── async3.jsp.html
+    │   │   │   │   ├── index.jsp
+    │   │   │   │   └── index.jsp.html
+    │   │   │   ├── [01;34mcal[00m
+    │   │   │   │   ├── cal1.jsp
+    │   │   │   │   ├── cal1.jsp.html
+    │   │   │   │   ├── cal2.jsp
+    │   │   │   │   ├── cal2.jsp.html
+    │   │   │   │   ├── calendar.html
+    │   │   │   │   ├── Entries.java.html
+    │   │   │   │   ├── Entry.java.html
+    │   │   │   │   ├── JspCalendar.java.html
+    │   │   │   │   ├── login.html
+    │   │   │   │   └── TableBean.java.html
+    │   │   │   ├── [01;34mcheckbox[00m
+    │   │   │   │   ├── check.html
+    │   │   │   │   ├── checkresult.jsp
+    │   │   │   │   ├── checkresult.jsp.html
+    │   │   │   │   ├── CheckTest.html
+    │   │   │   │   └── cresult.html
+    │   │   │   ├── [01;34mcolors[00m
+    │   │   │   │   ├── clr.html
+    │   │   │   │   ├── ColorGameBean.html
+    │   │   │   │   ├── colors.html
+    │   │   │   │   ├── colrs.jsp
+    │   │   │   │   └── colrs.jsp.html
+    │   │   │   ├── [01;34mdates[00m
+    │   │   │   │   ├── date.html
+    │   │   │   │   ├── date.jsp
+    │   │   │   │   └── date.jsp.html
+    │   │   │   ├── [01;34merror[00m
+    │   │   │   │   ├── er.html
+    │   │   │   │   ├── err.jsp
+    │   │   │   │   ├── err.jsp.html
+    │   │   │   │   ├── error.html
+    │   │   │   │   ├── errorpge.jsp
+    │   │   │   │   └── errorpge.jsp.html
+    │   │   │   ├── [01;34mforward[00m
+    │   │   │   │   ├── forward.jsp
+    │   │   │   │   ├── forward.jsp.html
+    │   │   │   │   ├── fwd.html
+    │   │   │   │   ├── one.jsp
+    │   │   │   │   ├── one.jsp.html
+    │   │   │   │   └── two.html
+    │   │   │   ├── [01;34mimages[00m
+    │   │   │   │   ├── [01;35mcode.gif[00m
+    │   │   │   │   ├── [01;35mexecute.gif[00m
+    │   │   │   │   ├── [01;35mread.gif[00m
+    │   │   │   │   └── [01;35mreturn.gif[00m
+    │   │   │   ├── [01;34minclude[00m
+    │   │   │   │   ├── foo.html
+    │   │   │   │   ├── foo.jsp
+    │   │   │   │   ├── foo.jsp.html
+    │   │   │   │   ├── inc.html
+    │   │   │   │   ├── include.jsp
+    │   │   │   │   └── include.jsp.html
+    │   │   │   ├── index.html
+    │   │   │   ├── [01;34mjsp2[00m
+    │   │   │   │   ├── [01;34mel[00m
+    │   │   │   │   │   ├── basic-arithmetic.html
+    │   │   │   │   │   ├── basic-arithmetic.jsp
+    │   │   │   │   │   ├── basic-arithmetic.jsp.html
+    │   │   │   │   │   ├── basic-comparisons.html
+    │   │   │   │   │   ├── basic-comparisons.jsp
+    │   │   │   │   │   ├── basic-comparisons.jsp.html
+    │   │   │   │   │   ├── composite.html
+    │   │   │   │   │   ├── composite.jsp
+    │   │   │   │   │   ├── composite.jsp.html
+    │   │   │   │   │   ├── functions.html
+    │   │   │   │   │   ├── Functions.java.html
+    │   │   │   │   │   ├── functions.jsp
+    │   │   │   │   │   ├── functions.jsp.html
+    │   │   │   │   │   ├── implicit-objects.html
+    │   │   │   │   │   ├── implicit-objects.jsp
+    │   │   │   │   │   ├── implicit-objects.jsp.html
+    │   │   │   │   │   ├── ValuesBean.java.html
+    │   │   │   │   │   └── ValuesTag.java.html
+    │   │   │   │   ├── [01;34mjspattribute[00m
+    │   │   │   │   │   ├── FooBean.java.html
+    │   │   │   │   │   ├── HelloWorldSimpleTag.java.html
+    │   │   │   │   │   ├── jspattribute.html
+    │   │   │   │   │   ├── jspattribute.jsp
+    │   │   │   │   │   ├── jspattribute.jsp.html
+    │   │   │   │   │   ├── shuffle.html
+    │   │   │   │   │   ├── shuffle.jsp
+    │   │   │   │   │   ├── shuffle.jsp.html
+    │   │   │   │   │   ├── ShuffleSimpleTag.java.html
+    │   │   │   │   │   └── TileSimpleTag.java.html
+    │   │   │   │   ├── [01;34mjspx[00m
+    │   │   │   │   │   ├── basic.html
+    │   │   │   │   │   ├── basic.jspx
+    │   │   │   │   │   ├── basic.jspx.html
+    │   │   │   │   │   ├── svgexample.html
+    │   │   │   │   │   ├── textRotate.html
+    │   │   │   │   │   ├── [01;35mtextRotate.jpg[00m
+    │   │   │   │   │   ├── textRotate.jspx
+    │   │   │   │   │   └── textRotate.jspx.html
+    │   │   │   │   ├── [01;34mmisc[00m
+    │   │   │   │   │   ├── coda.jspf
+    │   │   │   │   │   ├── coda.jspf.html
+    │   │   │   │   │   ├── config.html
+    │   │   │   │   │   ├── config.jsp
+    │   │   │   │   │   ├── config.jsp.html
+    │   │   │   │   │   ├── dynamicattrs.html
+    │   │   │   │   │   ├── dynamicattrs.jsp
+    │   │   │   │   │   ├── dynamicattrs.jsp.html
+    │   │   │   │   │   ├── EchoAttributesTag.java.html
+    │   │   │   │   │   ├── prelude.jspf
+    │   │   │   │   │   └── prelude.jspf.html
+    │   │   │   │   ├── [01;34msimpletag[00m
+    │   │   │   │   │   ├── BookBean.java.html
+    │   │   │   │   │   ├── book.html
+    │   │   │   │   │   ├── book.jsp
+    │   │   │   │   │   ├── book.jsp.html
+    │   │   │   │   │   ├── FindBookSimpleTag.java.html
+    │   │   │   │   │   ├── Functions.java.html
+    │   │   │   │   │   ├── hello.html
+    │   │   │   │   │   ├── hello.jsp
+    │   │   │   │   │   ├── hello.jsp.html
+    │   │   │   │   │   ├── HelloWorldSimpleTag.java.html
+    │   │   │   │   │   ├── repeat.html
+    │   │   │   │   │   ├── repeat.jsp
+    │   │   │   │   │   ├── repeat.jsp.html
+    │   │   │   │   │   └── RepeatSimpleTag.java.html
+    │   │   │   │   └── [01;34mtagfiles[00m
+    │   │   │   │       ├── displayProducts.tag.html
+    │   │   │   │       ├── hello.html
+    │   │   │   │       ├── hello.jsp
+    │   │   │   │       ├── hello.jsp.html
+    │   │   │   │       ├── helloWorld.tag.html
+    │   │   │   │       ├── panel.html
+    │   │   │   │       ├── panel.jsp
+    │   │   │   │       ├── panel.jsp.html
+    │   │   │   │       ├── panel.tag.html
+    │   │   │   │       ├── products.html
+    │   │   │   │       ├── products.jsp
+    │   │   │   │       └── products.jsp.html
+    │   │   │   ├── [01;34mjsptoserv[00m
+    │   │   │   │   ├── hello.jsp
+    │   │   │   │   ├── hello.jsp.html
+    │   │   │   │   ├── jsptoservlet.jsp
+    │   │   │   │   ├── jsptoservlet.jsp.html
+    │   │   │   │   ├── jts.html
+    │   │   │   │   └── ServletToJsp.java.html
+    │   │   │   ├── [01;34mnum[00m
+    │   │   │   │   ├── numguess.html
+    │   │   │   │   ├── numguess.jsp
+    │   │   │   │   └── numguess.jsp.html
+    │   │   │   ├── [01;34mplugin[00m
+    │   │   │   │   ├── [01;34mapplet[00m
+    │   │   │   │   │   ├── Clock2.class
+    │   │   │   │   │   └── Clock2.java
+    │   │   │   │   ├── plugin.html
+    │   │   │   │   ├── plugin.jsp
+    │   │   │   │   └── plugin.jsp.html
+    │   │   │   ├── [01;34msecurity[00m
+    │   │   │   │   └── [01;34mprotected[00m
+    │   │   │   │       ├── error.jsp
+    │   │   │   │       ├── error.jsp.html
+    │   │   │   │       ├── index.jsp
+    │   │   │   │       ├── index.jsp.html
+    │   │   │   │       ├── login.jsp
+    │   │   │   │       └── login.jsp.html
+    │   │   │   ├── [01;34msessions[00m
+    │   │   │   │   ├── carts.html
+    │   │   │   │   ├── carts.jsp
+    │   │   │   │   ├── carts.jsp.html
+    │   │   │   │   ├── crt.html
+    │   │   │   │   └── DummyCart.html
+    │   │   │   ├── [01;34msimpletag[00m
+    │   │   │   │   ├── foo.html
+    │   │   │   │   ├── foo.jsp
+    │   │   │   │   └── foo.jsp.html
+    │   │   │   ├── [01;34msnp[00m
+    │   │   │   │   ├── snoop.html
+    │   │   │   │   ├── snoop.jsp
+    │   │   │   │   └── snoop.jsp.html
+    │   │   │   ├── source.jsp
+    │   │   │   ├── source.jsp.html
+    │   │   │   ├── [01;34mtagplugin[00m
+    │   │   │   │   ├── choose.html
+    │   │   │   │   ├── choose.jsp
+    │   │   │   │   ├── choose.jsp.html
+    │   │   │   │   ├── foreach.html
+    │   │   │   │   ├── foreach.jsp
+    │   │   │   │   ├── foreach.jsp.html
+    │   │   │   │   ├── howto.html
+    │   │   │   │   ├── if.html
+    │   │   │   │   ├── if.jsp
+    │   │   │   │   ├── if.jsp.html
+    │   │   │   │   └── notes.html
+    │   │   │   └── [01;34mxml[00m
+    │   │   │       ├── xml.html
+    │   │   │       ├── xml.jsp
+    │   │   │       └── xml.jsp.html
+    │   │   ├── [01;34mservlets[00m
+    │   │   │   ├── cookies.html
+    │   │   │   ├── helloworld.html
+    │   │   │   ├── [01;34mimages[00m
+    │   │   │   │   ├── [01;35mcode.gif[00m
+    │   │   │   │   ├── [01;35mexecute.gif[00m
+    │   │   │   │   └── [01;35mreturn.gif[00m
+    │   │   │   ├── index.html
+    │   │   │   ├── [01;34mnonblocking[00m
+    │   │   │   │   └── bytecounter.html
+    │   │   │   ├── reqheaders.html
+    │   │   │   ├── reqinfo.html
+    │   │   │   ├── reqparams.html
+    │   │   │   └── sessions.html
+    │   │   ├── [01;34mWEB-INF[00m
+    │   │   │   ├── [01;34mclasses[00m
+    │   │   │   │   ├── [01;34masync[00m
+    │   │   │   │   │   ├── Async0$1.class
+    │   │   │   │   │   ├── Async0.class
+    │   │   │   │   │   ├── Async0.java
+    │   │   │   │   │   ├── Async1$1.class
+    │   │   │   │   │   ├── Async1.class
+    │   │   │   │   │   ├── Async1.java
+    │   │   │   │   │   ├── Async2$1.class
+    │   │   │   │   │   ├── Async2.class
+    │   │   │   │   │   ├── Async2.java
+    │   │   │   │   │   ├── Async3.class
+    │   │   │   │   │   ├── Async3.java
+    │   │   │   │   │   ├── AsyncStockContextListener.class
+    │   │   │   │   │   ├── AsyncStockContextListener.java
+    │   │   │   │   │   ├── AsyncStockServlet.class
+    │   │   │   │   │   ├── AsyncStockServlet.java
+    │   │   │   │   │   ├── Stockticker.class
+    │   │   │   │   │   ├── Stockticker.java
+    │   │   │   │   │   ├── Stockticker$Stock.class
+    │   │   │   │   │   └── Stockticker$TickListener.class
+    │   │   │   │   ├── [01;34mcal[00m
+    │   │   │   │   │   ├── Entries.class
+    │   │   │   │   │   ├── Entries.java
+    │   │   │   │   │   ├── Entry.class
+    │   │   │   │   │   ├── Entry.java
+    │   │   │   │   │   ├── JspCalendar.class
+    │   │   │   │   │   ├── JspCalendar.java
+    │   │   │   │   │   ├── TableBean.class
+    │   │   │   │   │   └── TableBean.java
+    │   │   │   │   ├── [01;34mcheckbox[00m
+    │   │   │   │   │   ├── CheckTest.class
+    │   │   │   │   │   └── CheckTest.java
+    │   │   │   │   ├── [01;34mcolors[00m
+    │   │   │   │   │   ├── ColorGameBean.class
+    │   │   │   │   │   └── ColorGameBean.java
+    │   │   │   │   ├── [01;34mcompressionFilters[00m
+    │   │   │   │   │   ├── CompressionFilter.class
+    │   │   │   │   │   ├── CompressionFilter.java
+    │   │   │   │   │   ├── CompressionFilterTestServlet.class
+    │   │   │   │   │   ├── CompressionFilterTestServlet.java
+    │   │   │   │   │   ├── CompressionResponseStream.class
+    │   │   │   │   │   ├── CompressionResponseStream.java
+    │   │   │   │   │   ├── CompressionServletResponseWrapper.class
+    │   │   │   │   │   └── CompressionServletResponseWrapper.java
+    │   │   │   │   ├── CookieExample.class
+    │   │   │   │   ├── CookieExample.java
+    │   │   │   │   ├── [01;34mdates[00m
+    │   │   │   │   │   ├── JspCalendar.class
+    │   │   │   │   │   └── JspCalendar.java
+    │   │   │   │   ├── [01;34merror[00m
+    │   │   │   │   │   ├── Smart.class
+    │   │   │   │   │   └── Smart.java
+    │   │   │   │   ├── [01;34mexamples[00m
+    │   │   │   │   │   ├── ExampleTagBase.class
+    │   │   │   │   │   ├── ExampleTagBase.java
+    │   │   │   │   │   ├── FooTag.class
+    │   │   │   │   │   ├── FooTagExtraInfo.class
+    │   │   │   │   │   ├── FooTagExtraInfo.java
+    │   │   │   │   │   ├── FooTag.java
+    │   │   │   │   │   ├── LogTag.class
+    │   │   │   │   │   ├── LogTag.java
+    │   │   │   │   │   ├── ShowSource.class
+    │   │   │   │   │   ├── ShowSource.java
+    │   │   │   │   │   ├── ValuesTag.class
+    │   │   │   │   │   └── ValuesTag.java
+    │   │   │   │   ├── [01;34mfilters[00m
+    │   │   │   │   │   ├── ExampleFilter.class
+    │   │   │   │   │   └── ExampleFilter.java
+    │   │   │   │   ├── HelloWorldExample.class
+    │   │   │   │   ├── HelloWorldExample.java
+    │   │   │   │   ├── [01;34mjsp2[00m
+    │   │   │   │   │   └── [01;34mexamples[00m
+    │   │   │   │   │       ├── BookBean.class
+    │   │   │   │   │       ├── BookBean.java
+    │   │   │   │   │       ├── [01;34mel[00m
+    │   │   │   │   │       │   ├── Functions.class
+    │   │   │   │   │       │   └── Functions.java
+    │   │   │   │   │       ├── FooBean.class
+    │   │   │   │   │       ├── FooBean.java
+    │   │   │   │   │       ├── [01;34msimpletag[00m
+    │   │   │   │   │       │   ├── EchoAttributesTag.class
+    │   │   │   │   │       │   ├── EchoAttributesTag.java
+    │   │   │   │   │       │   ├── FindBookSimpleTag.class
+    │   │   │   │   │       │   ├── FindBookSimpleTag.java
+    │   │   │   │   │       │   ├── HelloWorldSimpleTag.class
+    │   │   │   │   │       │   ├── HelloWorldSimpleTag.java
+    │   │   │   │   │       │   ├── RepeatSimpleTag.class
+    │   │   │   │   │       │   ├── RepeatSimpleTag.java
+    │   │   │   │   │       │   ├── ShuffleSimpleTag.class
+    │   │   │   │   │       │   ├── ShuffleSimpleTag.java
+    │   │   │   │   │       │   ├── TileSimpleTag.class
+    │   │   │   │   │       │   └── TileSimpleTag.java
+    │   │   │   │   │       ├── ValuesBean.class
+    │   │   │   │   │       └── ValuesBean.java
+    │   │   │   │   ├── [01;34mlisteners[00m
+    │   │   │   │   │   ├── ContextListener.class
+    │   │   │   │   │   ├── ContextListener.java
+    │   │   │   │   │   ├── SessionListener.class
+    │   │   │   │   │   └── SessionListener.java
+    │   │   │   │   ├── LocalStrings_en.properties
+    │   │   │   │   ├── LocalStrings_es.properties
+    │   │   │   │   ├── LocalStrings_fr.properties
+    │   │   │   │   ├── LocalStrings.properties
+    │   │   │   │   ├── LocalStrings_pt.properties
+    │   │   │   │   ├── [01;34mnonblocking[00m
+    │   │   │   │   │   ├── ByteCounter$1.class
+    │   │   │   │   │   ├── ByteCounter.class
+    │   │   │   │   │   ├── ByteCounter$CounterListener.class
+    │   │   │   │   │   ├── ByteCounter.java
+    │   │   │   │   │   ├── NumberWriter$1.class
+    │   │   │   │   │   ├── NumberWriter.class
+    │   │   │   │   │   ├── NumberWriter.java
+    │   │   │   │   │   └── NumberWriter$NumberWriterListener.class
+    │   │   │   │   ├── [01;34mnum[00m
+    │   │   │   │   │   ├── NumberGuessBean.class
+    │   │   │   │   │   └── NumberGuessBean.java
+    │   │   │   │   ├── RequestHeaderExample.class
+    │   │   │   │   ├── RequestHeaderExample.java
+    │   │   │   │   ├── RequestInfoExample.class
+    │   │   │   │   ├── RequestInfoExample.java
+    │   │   │   │   ├── RequestParamExample.class
+    │   │   │   │   ├── RequestParamExample.java
+    │   │   │   │   ├── ServletToJsp.class
+    │   │   │   │   ├── ServletToJsp.java
+    │   │   │   │   ├── SessionExample.class
+    │   │   │   │   ├── SessionExample.java
+    │   │   │   │   ├── [01;34msessions[00m
+    │   │   │   │   │   ├── DummyCart.class
+    │   │   │   │   │   └── DummyCart.java
+    │   │   │   │   ├── [01;34mutil[00m
+    │   │   │   │   │   ├── CookieFilter.class
+    │   │   │   │   │   ├── CookieFilter.java
+    │   │   │   │   │   ├── HTMLFilter.class
+    │   │   │   │   │   └── HTMLFilter.java
+    │   │   │   │   ├── [01;34mvalidators[00m
+    │   │   │   │   │   ├── DebugValidator.class
+    │   │   │   │   │   └── DebugValidator.java
+    │   │   │   │   └── [01;34mwebsocket[00m
+    │   │   │   │       ├── [01;34mchat[00m
+    │   │   │   │       │   ├── ChatAnnotation.class
+    │   │   │   │       │   └── ChatAnnotation.java
+    │   │   │   │       ├── [01;34mdrawboard[00m
+    │   │   │   │       │   ├── Client$1.class
+    │   │   │   │       │   ├── Client.class
+    │   │   │   │       │   ├── Client.java
+    │   │   │   │       │   ├── DrawboardContextListener.class
+    │   │   │   │       │   ├── DrawboardContextListener.java
+    │   │   │   │       │   ├── DrawboardEndpoint$1.class
+    │   │   │   │       │   ├── DrawboardEndpoint$2.class
+    │   │   │   │       │   ├── DrawboardEndpoint$3$1.class
+    │   │   │   │       │   ├── DrawboardEndpoint$3.class
+    │   │   │   │       │   ├── DrawboardEndpoint.class
+    │   │   │   │       │   ├── DrawboardEndpoint.java
+    │   │   │   │       │   ├── DrawMessage.class
+    │   │   │   │       │   ├── DrawMessage.java
+    │   │   │   │       │   ├── DrawMessage$ParseException.class
+    │   │   │   │       │   ├── Room$1$1.class
+    │   │   │   │       │   ├── Room$1.class
+    │   │   │   │       │   ├── Room$2.class
+    │   │   │   │       │   ├── Room.class
+    │   │   │   │       │   ├── Room.java
+    │   │   │   │       │   ├── Room$MessageType.class
+    │   │   │   │       │   ├── Room$Player.class
+    │   │   │   │       │   └── [01;34mwsmessages[00m
+    │   │   │   │       │       ├── AbstractWebsocketMessage.class
+    │   │   │   │       │       ├── AbstractWebsocketMessage.java
+    │   │   │   │       │       ├── BinaryWebsocketMessage.class
+    │   │   │   │       │       ├── BinaryWebsocketMessage.java
+    │   │   │   │       │       ├── CloseWebsocketMessage.class
+    │   │   │   │       │       ├── CloseWebsocketMessage.java
+    │   │   │   │       │       ├── StringWebsocketMessage.class
+    │   │   │   │       │       └── StringWebsocketMessage.java
+    │   │   │   │       ├── [01;34mecho[00m
+    │   │   │   │       │   ├── EchoAnnotation.class
+    │   │   │   │       │   ├── EchoAnnotation.java
+    │   │   │   │       │   ├── EchoAsyncAnnotation$1.class
+    │   │   │   │       │   ├── EchoAsyncAnnotation.class
+    │   │   │   │       │   ├── EchoAsyncAnnotation$CompletedFuture.class
+    │   │   │   │       │   ├── EchoAsyncAnnotation.java
+    │   │   │   │       │   ├── EchoEndpoint$1.class
+    │   │   │   │       │   ├── EchoEndpoint.class
+    │   │   │   │       │   ├── EchoEndpoint$EchoMessageHandlerBinary.class
+    │   │   │   │       │   ├── EchoEndpoint$EchoMessageHandlerText.class
+    │   │   │   │       │   ├── EchoEndpoint.java
+    │   │   │   │       │   ├── EchoStreamAnnotation.class
+    │   │   │   │       │   ├── EchoStreamAnnotation.java
+    │   │   │   │       │   └── servers.json
+    │   │   │   │       ├── ExamplesConfig.class
+    │   │   │   │       ├── ExamplesConfig.java
+    │   │   │   │       └── [01;34msnake[00m
+    │   │   │   │           ├── Direction.class
+    │   │   │   │           ├── Direction.java
+    │   │   │   │           ├── Location$1.class
+    │   │   │   │           ├── Location.class
+    │   │   │   │           ├── Location.java
+    │   │   │   │           ├── SnakeAnnotation.class
+    │   │   │   │           ├── SnakeAnnotation.java
+    │   │   │   │           ├── Snake.class
+    │   │   │   │           ├── Snake.java
+    │   │   │   │           ├── SnakeTimer$1.class
+    │   │   │   │           ├── SnakeTimer.class
+    │   │   │   │           └── SnakeTimer.java
+    │   │   │   ├── [01;34mjsp[00m
+    │   │   │   │   ├── [01;34mapplet[00m
+    │   │   │   │   │   └── Clock2.java
+    │   │   │   │   ├── debug-taglib.tld
+    │   │   │   │   └── example-taglib.tld
+    │   │   │   ├── [01;34mjsp2[00m
+    │   │   │   │   └── jsp2-example-taglib.tld
+    │   │   │   ├── [01;34mlib[00m
+    │   │   │   │   ├── [01;31mtaglibs-standard-impl-1.2.5.jar[00m
+    │   │   │   │   └── [01;31mtaglibs-standard-spec-1.2.5.jar[00m
+    │   │   │   ├── [01;34mtags[00m
+    │   │   │   │   ├── displayProducts.tag
+    │   │   │   │   ├── helloWorld.tag
+    │   │   │   │   └── panel.tag
+    │   │   │   └── web.xml
+    │   │   └── [01;34mwebsocket[00m
+    │   │       ├── chat.xhtml
+    │   │       ├── drawboard.xhtml
+    │   │       ├── echo.xhtml
+    │   │       ├── index.xhtml
+    │   │       └── snake.xhtml
+    │   ├── [01;34mhost-manager[00m
+    │   │   ├── [01;34mimages[00m
+    │   │   │   ├── [01;35madd.gif[00m
+    │   │   │   ├── [01;35masf-logo.svg[00m
+    │   │   │   ├── [01;35mcode.gif[00m
+    │   │   │   ├── [01;35mdesign.gif[00m
+    │   │   │   ├── [01;35mdocs.gif[00m
+    │   │   │   ├── [01;35mfix.gif[00m
+    │   │   │   ├── [01;35mtomcat.gif[00m
+    │   │   │   ├── [01;35mupdate.gif[00m
+    │   │   │   └── [01;35mvoid.gif[00m
+    │   │   ├── index.jsp
+    │   │   ├── manager.xml
+    │   │   ├── [01;34mMETA-INF[00m
+    │   │   │   └── context.xml
+    │   │   └── [01;34mWEB-INF[00m
+    │   │       ├── [01;34mjsp[00m
+    │   │       │   ├── 401.jsp
+    │   │       │   ├── 403.jsp
+    │   │       │   └── 404.jsp
+    │   │       └── web.xml
+    │   ├── [01;34mILP-0.0.1-20190411.192309-16[00m
+    │   │   ├── fail.jsp
+    │   │   ├── forgotpassword.jsp
+    │   │   ├── index.jsp
+    │   │   ├── [01;34mMETA-INF[00m
+    │   │   │   ├── MANIFEST.MF
+    │   │   │   ├── [01;34mmaven[00m
+    │   │   │   │   └── [01;34mdevops.ilp1[00m
+    │   │   │   │       └── [01;34mILP[00m
+    │   │   │   │           ├── pom.properties
+    │   │   │   │           └── pom.xml
+    │   │   │   └── war-tracker
+    │   │   ├── register.jsp
+    │   │   ├── success.jsp
+    │   │   └── [01;34mWEB-INF[00m
+    │   │       ├── [01;34mclasses[00m
+    │   │       │   └── [01;34mdevops[00m
+    │   │       │       └── [01;34milp1[00m
+    │   │       │           ├── [01;34mcontrollerWithoutDb[00m
+    │   │       │           │   ├── UserLoginController.class
+    │   │       │           │   ├── UserPasswordController.class
+    │   │       │           │   └── UserRegisterController.class
+    │   │       │           ├── [01;34mdb[00m
+    │   │       │           │   └── UserDb.class
+    │   │       │           ├── [01;34mmodel[00m
+    │   │       │           │   └── User.class
+    │   │       │           └── [01;34mservice[00m
+    │   │       │               └── UserService.class
+    │   │       ├── [01;34mlib[00m
+    │   │       │   └── [01;31mjstl-1.2.jar[00m
+    │   │       └── web.xml
+    │   ├── [01;31mILP-0.0.1-20190411.192309-16.war[00m
+    │   ├── [01;34mmanager[00m
+    │   │   ├── [01;34mimages[00m
+    │   │   │   ├── [01;35madd.gif[00m
+    │   │   │   ├── [01;35masf-logo.svg[00m
+    │   │   │   ├── [01;35mcode.gif[00m
+    │   │   │   ├── [01;35mdesign.gif[00m
+    │   │   │   ├── [01;35mdocs.gif[00m
+    │   │   │   ├── [01;35mfix.gif[00m
+    │   │   │   ├── [01;35mtomcat.gif[00m
+    │   │   │   ├── [01;35mupdate.gif[00m
+    │   │   │   └── [01;35mvoid.gif[00m
+    │   │   ├── index.jsp
+    │   │   ├── [01;34mMETA-INF[00m
+    │   │   │   └── context.xml
+    │   │   ├── status.xsd
+    │   │   ├── [01;34mWEB-INF[00m
+    │   │   │   ├── [01;34mjsp[00m
+    │   │   │   │   ├── 401.jsp
+    │   │   │   │   ├── 403.jsp
+    │   │   │   │   ├── 404.jsp
+    │   │   │   │   ├── connectorCerts.jsp
+    │   │   │   │   ├── connectorCiphers.jsp
+    │   │   │   │   ├── connectorTrustedCerts.jsp
+    │   │   │   │   ├── sessionDetail.jsp
+    │   │   │   │   └── sessionsList.jsp
+    │   │   │   └── web.xml
+    │   │   └── xform.xsl
+    │   └── [01;34mROOT[00m
+    │       ├── [01;35masf-logo-wide.svg[00m
+    │       ├── [01;35mbg-button.png[00m
+    │       ├── [01;35mbg-middle.png[00m
+    │       ├── [01;35mbg-nav-item.png[00m
+    │       ├── [01;35mbg-nav.png[00m
+    │       ├── [01;35mbg-upper.png[00m
+    │       ├── favicon.ico
+    │       ├── index.jsp
+    │       ├── RELEASE-NOTES.txt
+    │       ├── tomcat.css
+    │       ├── [01;35mtomcat.gif[00m
+    │       ├── [01;35mtomcat.png[00m
+    │       ├── [01;35mtomcat-power.gif[00m
+    │       ├── [01;35mtomcat.svg[00m
+    │       └── [01;34mWEB-INF[00m
+    │           └── web.xml
+    └── [01;34mwork[00m
+        └── [01;34mCatalina[00m
+            └── [01;34mlocalhost[00m
+                ├── [01;34mdocs[00m
+                ├── [01;34mexamples[00m
+                ├── [01;34mhost-manager[00m
+                ├── [01;34mILP-0.0.1-20190411.192309-16[00m
+                │   └── [01;34morg[00m
+                │       └── [01;34mapache[00m
+                │           └── [01;34mjsp[00m
+                │               ├── index_jsp.class
+                │               └── index_jsp.java
+                ├── [01;34mmanager[00m
+                │   └── [01;34morg[00m
+                │       └── [01;34mapache[00m
+                │           └── [01;34mjsp[00m
+                │               └── [01;34mWEB_002dINF[00m
+                │                   └── [01;34mjsp[00m
+                │                       ├── _401_jsp.class
+                │                       └── _401_jsp.java
+                └── [01;34mROOT[00m
+                    └── [01;34morg[00m
+                        └── [01;34mapache[00m
+                            └── [01;34mjsp[00m
+                                ├── index_jsp.class
+                                └── index_jsp.java
+
+143 directories, 669 files
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ls tomcat/apache-tomcat-8.5.27/webapps/
+[0m[01;34mdocs[0m  [01;34mexamples[0m  [01;34mhost-manager[0m  [01;34mILP-0.0.1-20190411.192309-16[0m  [01;31mILP-0.0.1-20190411.192309-16.war[0m  [01;34mmanager[0m  [01;34mROOT[0m
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ ansible-playbook roles/tomcat/tomcat.yml
+
+PLAY [localhost] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Create the target folder] *****************************************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Install Tomcat] ***************************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Configure the port address] ***************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [tomcat : Deploy the war file in the Webapps directory] *********************************************************************************
+[0;32mok: [localhost][0m
+
+TASK [tomcat : Start the tomcat server] ******************************************************************************************************
+[0;33mchanged: [localhost][0m
+
+PLAY RECAP ***********************************************************************************************************************************
+[0;33mlocalhost[0m                  : [0;32mok=6   [0m [0;33mchanged=3   [0m unreachable=0    failed=0   
+
+]0;osgdev@TG-Devops-OS067: ~/ansiblehands[01;32mosgdev@TG-Devops-OS067[00m:[01;34m~/ansiblehands[00m$ exit
+exit
+
+Script done on Tuesday 23 April 2019 09:38:09 PM IST
